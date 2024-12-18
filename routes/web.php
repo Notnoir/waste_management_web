@@ -15,5 +15,14 @@ Route::get('/dashboard-pengelola', function () {
 Route::get('/dashboard-admin', function () {
     return view('admin.dashboard');
 });
+Route::get('/login', function () {
+    return view('auth.login');
+});
+Route::get('/register', function () {
+    return view('auth.register');
+});
+Route::get('/profile', function () {
+    return view('warga.profile');
+});
 
 
