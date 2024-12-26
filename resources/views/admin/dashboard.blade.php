@@ -20,7 +20,7 @@
     </div>
 
     <!-- Table -->
-    <div class="bg-white shadow rounded">
+    <div class="bg-white shadow rounded overflow-x-auto">
         <div class="p-4 border-b">
             <h3 class="text-lg font-semibold">Transaksi Terbaru</h3>
         </div>

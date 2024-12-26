@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WasteController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminDashboardController;
 
@@ -26,16 +27,22 @@ Route::get('/register', function () {
 Route::get('/profile', function () {
     return view('warga.profile');
 });
+Route::get('/jenis-wastes', function () {
+    return view('admin.jenis_sampah.index');
+});
 
 // halaman admin
 Route::get('/dashboard-admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/transactions', [AdminDashboardController::class, 'transactions'])->name('admin.transactions');
 Route::get('/users', [AdminDashboardController::class, 'users'])->name('admin.users');
 Route::get('/schedules', [AdminDashboardController::class, 'schedules'])->name('admin.schedules');
-Route::get('/wastes', [AdminDashboardController::class, 'wastes'])->name('admin.wastes');
+//Route::get('/wastes', [AdminDashboardController::class, 'wastes'])->name('admin.wastes');
 
 // halaman admin set user
 Route::resource('admin/users', AdminUserController::class);
 // Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users.index');
 // Route::get('/users/{id}', [AdminUserController::class, 'show'])->name('admin.users.show');
 // Route::delete('/users/{id}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
+
+// halaman admin set sampah
+Route::resource('admin/wastes', WasteController::class);

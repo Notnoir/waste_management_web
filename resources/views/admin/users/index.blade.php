@@ -24,7 +24,7 @@
             </div>
             <button type="submit"
                 class="hidden sm:block text-white bg-[#31e146] hover:bg-[#3fc04e] focus:ring-4 focus:outline-none focus:ring-[#38ff4f8a] focus:border-[#38ff4f8a] font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Search
+                Cari
             </button>
         </form>
 
@@ -46,7 +46,7 @@
     <!-- Modal Tambah Pengguna -->
     <div id="crud-modal" tabindex="-1" aria-hidden="true"
         class="hidden fixed inset-0 z-50 flex justify-center items-center w-full h-screen bg-gray-900 bg-opacity-50">
-        <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="relative p-4 w-full max-w-md max-h-full overflow-y-auto">
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
@@ -157,8 +157,7 @@
                     <td class="px-6 py-3 border-b">{{ $user->email }}</td>
                     <td class="px-6 py-3 border-b capitalize">{{ $user->role }}</td>
                     <td class="px-6 py-3 border-b text-center space-x-4">
-                        <a href="{{ route('admin.users.show', $user->id) }}"
-                            class="text-blue-500 hover:underline">Detail</a>
+                        <a href="{{ route('users.show', $user->id) }}" class="text-blue-500 hover:underline">Detail</a>
                         <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
                             class="text-red-500 hover:underline" data-id="{{ $user->id }}" data-name="{{ $user->name }}"
                             type="button">
