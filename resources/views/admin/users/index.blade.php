@@ -20,7 +20,7 @@
                 </div>
                 <input type="search" id="default-search" value="{{ $search ?? '' }}" name="search"
                     class="block w-full ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Cari pengguna" required />
+                    placeholder="Cari pengguna" />
             </div>
             <button type="submit"
                 class="hidden sm:block text-white bg-[#31e146] hover:bg-[#3fc04e] focus:ring-4 focus:outline-none focus:ring-[#38ff4f8a] focus:border-[#38ff4f8a] font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">

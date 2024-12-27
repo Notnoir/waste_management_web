@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WasteController;
+use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AdminDashboardController;
 
 Route::get('/', function () {
@@ -54,3 +56,9 @@ Route::resource('admin/wastes', WasteController::class);
 
 // halaman admin set jadwal
 Route::resource('admin/schedules', ScheduleController::class);
+
+// halaman admin set kendaraan
+Route::resource('admin/vehicles', VehicleController::class);
+
+// halaman admin set transaksi
+Route::resource('transactions', TransactionController::class);

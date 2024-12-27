@@ -374,14 +374,14 @@
     const deleteButtons = document.querySelectorAll('[data-modal-toggle="popup-modal"]');
     const deleteModal = document.getElementById('popup-modal');
     const deleteForm = document.getElementById('deleteForm');
-    const deleteScheduleName = document.getElementById('deleteScheduleName');
+    const deleteVehicleName = document.getElementById('deleteVehicleName');
 
     deleteButtons.forEach(button => {
         button.addEventListener('click', (event) => {
-            const scheduleId = event.target.getAttribute('data-id');
-            const scheduleName = event.target.getAttribute('data-name');
-            deleteScheduleName.textContent = scheduleName;
-            deleteForm.action = `/admin/schedules/${scheduleId}`;
+            const vehicleId = event.target.getAttribute('data-id');
+            const vehicleName = event.target.getAttribute('data-name');
+            deleteVehicleName.textContent = vehicleName;
+            deleteForm.action = `/admin/vehicles/${vehicleId}`;
             deleteModal.classList.remove('hidden');
         });
     });

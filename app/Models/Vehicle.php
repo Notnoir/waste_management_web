@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Vehicle extends Model
 {
@@ -29,12 +30,22 @@ class Vehicle extends Model
      * @var array
      */
     protected $fillable = [
-        'id',
+        // 'id',
         'name',
         'license_plate',
         'capacity',
         'status',
     ];
+
+    // Mengatur kolom 'id' menggunakan UUID
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($vehicle) {
+            $vehicle->id = (string) Str::uuid(); // Menghasilkan UUID
+        });
+    }
 
     /**
      * Relationships to `pickup_assignments`.

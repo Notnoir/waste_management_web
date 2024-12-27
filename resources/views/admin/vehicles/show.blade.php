@@ -3,41 +3,37 @@
 @section('content')
 <!-- Content -->
 <div class="p-6 space-y-6">
-    <h1 class="text-3xl font-bold text-gray-800 mb-6">Detail Jadwal</h1>
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Detail Kendaraan</h1>
 
-    <!-- Informasi Schedule -->
+    <!-- Informasi Vehicle -->
     <div class="bg-white shadow rounded p-6">
         <h3 class="text-lg font-semibold text-gray-700 mb-4">Informasi</h3>
         <div class="space-y-4">
-            <p><strong>Nama Pengguna:</strong> <span class="text-gray-800">{{ $schedule->user->name }}</span></p>
-            <p><strong>Tipe Limbah:</strong> <span class="text-gray-800">{{ $schedule->waste->type }}</span></p>
-            <p><strong>Tanggal Pengambilan:</strong> <span class="text-gray-800">{{ $schedule->pickup_date->format('d M
-                    Y')
-                    }}</span></p>
-            <p><strong>Berat:</strong> <span class="text-gray-800">{{ $schedule->quantity }} kg</span></p>
+            <p><strong>Nama Kendaraan:</strong> <span class="text-gray-800">{{ $vehicle->name }}</span></p>
+            <p><strong>Plat Nomor:</strong> <span class="text-gray-800">{{ $vehicle->license_plate }}</span></p>
+            <p><strong>Kapasitas:</strong> <span class="text-gray-800">{{ $vehicle->capacity }} orang</span></p>
             <p><strong>Status:</strong>
                 <span class="text-gray-800">
-                    @if($schedule->status == 'pending') Pending
-                    @elseif($schedule->status == 'completed') Completed
-                    @elseif($schedule->status == 'cancelled') Cancelled
+                    @if($vehicle->status == 'available') Tersedia
+                    @elseif($vehicle->status == 'maintenance') Dalam Perawatan
                     @endif
                 </span>
             </p>
-            <p><strong>Dibuat Pada:</strong> <span class="text-gray-800">{{ $schedule->created_at->format('Y-m-d H:i')
+            <p><strong>Dibuat Pada:</strong> <span class="text-gray-800">{{ $vehicle->created_at->format('Y-m-d H:i')
                     }}</span></p>
-            <p><strong>Terakhir Diperbarui:</strong> <span class="text-gray-800">{{ $schedule->updated_at ?
-                    $schedule->updated_at->format('Y-m-d H:i') : 'Not Updated Yet' }}</span></p>
+            <p><strong>Terakhir Diperbarui:</strong> <span class="text-gray-800">{{ $vehicle->updated_at ?
+                    $vehicle->updated_at->format('Y-m-d H:i') : 'Belum Diperbarui' }}</span></p>
         </div>
     </div>
 
     <!-- Tombol Aksi -->
     <div class="mt-6">
-        <a href="{{ route('schedules.index') }}"
+        <a href="{{ route('vehicles.index') }}"
             class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
             Kembali
         </a>
         <button type="submit" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-            data-id="{{ $schedule->id }}" data-name="{{ $schedule->user->name }} - {{ $schedule->waste->type }}"
+            data-id="{{ $vehicle->id }}" data-name="{{ $vehicle->name }}"
             class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
             Hapus
         </button>
@@ -48,9 +44,8 @@
 <div id="popup-modal" tabindex="-1"
     class="hidden fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
     <div class="bg-white p-6 rounded-lg w-full max-w-md shadow-lg">
-        <h3 class="text-xl font-semibold text-gray-800 border-b-2 py-3">Hapus Schedule</h3>
-        <p class="text-gray-500 my-6">Apakah Anda yakin ingin menghapus jadwal pengguna <span
-                id="deleteScheduleName"></span>?
+        <h3 class="text-xl font-semibold text-gray-800 border-b-2 py-3">Hapus Kendaraan</h3>
+        <p class="text-gray-500 my-6">Apakah Anda yakin ingin menghapus kendaraan <span id="deleteVehicleName"></span>?
         </p>
         <form id="deleteForm" action="" method="POST">
             @csrf
@@ -74,14 +69,14 @@
     const deleteButtons = document.querySelectorAll('[data-modal-toggle="popup-modal"]');
     const deleteModal = document.getElementById('popup-modal');
     const deleteForm = document.getElementById('deleteForm');
-    const deleteScheduleName = document.getElementById('deleteScheduleName');
+    const deleteVehicleName = document.getElementById('deleteVehicleName');
 
     deleteButtons.forEach(button => {
         button.addEventListener('click', (event) => {
-            const scheduleId = event.target.getAttribute('data-id');
-            const scheduleName = event.target.getAttribute('data-name');
-            deleteScheduleName.textContent = scheduleName;
-            deleteForm.action = `/admin/schedules/${scheduleId}`;
+            const vehicleId = event.target.getAttribute('data-id');
+            const vehicleName = event.target.getAttribute('data-name');
+            deleteVehicleName.textContent = vehicleName;
+            deleteForm.action = `/admin/vehicles/${vehicleId}`;
             deleteModal.classList.remove('hidden');
         });
     });
@@ -90,5 +85,4 @@
         deleteModal.classList.add('hidden');
     });
 </script>
-
 @endsection
