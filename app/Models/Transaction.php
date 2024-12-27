@@ -25,6 +25,9 @@ class Transaction extends Model
      *
      * @var array
      */
+    protected $keyType = 'string'; // UUID adalah string
+    public $incrementing = false; // Tidak menggunakan auto-increment integer
+
     protected $fillable = [
         'id',
         'user_id',
@@ -53,7 +56,7 @@ class Transaction extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     /**
@@ -61,6 +64,6 @@ class Transaction extends Model
      */
     public function schedule()
     {
-        return $this->belongsTo(Schedule::class);
+        return $this->belongsTo(Schedule::class, 'schedule_id', 'id');
     }
 }

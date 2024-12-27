@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -24,6 +25,16 @@ class Feedback extends Model
         'rating',
         'comments',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Set UUID before creating
+        static::creating(function ($model) {
+            $model->id = Str::uuid();
+        });
+    }
 
     // Relasi ke tabel Users
     public function user()

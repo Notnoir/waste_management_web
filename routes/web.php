@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Schedule;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WasteController;
 use App\Http\Controllers\VehicleController;
@@ -61,4 +63,16 @@ Route::resource('admin/schedules', ScheduleController::class);
 Route::resource('admin/vehicles', VehicleController::class);
 
 // halaman admin set transaksi
-Route::resource('transactions', TransactionController::class);
+
+// Route untuk mendapatkan schedules berdasarkan user_id
+Route::get('/schedules-transactions', function (Request $request) {
+    $user_id = $request->query('user_id');
+
+    $schedules = Schedule::where('user_id', $user_id)->get();
+
+    return response()->json([
+        'schedules' => $schedules
+    ]);
+});
+
+Route::resource('admin/transactions', TransactionController::class);

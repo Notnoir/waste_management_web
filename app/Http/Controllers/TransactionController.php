@@ -11,11 +11,32 @@ use Illuminate\Support\Str;
 class TransactionController extends Controller
 {
     // Menampilkan daftar transaksi
-    public function index()
+    public function index(Request $request)
     {
-        $transactions = Transaction::with(['user', 'schedule'])->latest()->paginate(10);
-        return view('admin.transactions.index', compact('transactions'));
+        $search = $request->input('search'); // Ambil input pencarian
+
+        // Query data transaksi dengan relasi
+        $transactions = Transaction::with(['user', 'schedule'])
+            ->when($search, function ($query, $search) {
+                $query->whereHas('user', function ($q) use ($search) {
+                    $q->where('name', 'like', '%' . $search . '%'); // Pencarian berdasarkan nama pengguna
+                })
+                    ->orWhereHas('schedule', function ($q) use ($search) {
+                        $q->where('pickup_date', 'like', '%' . $search . '%'); // Pencarian berdasarkan tanggal jadwal
+                    })
+                    ->orWhere('amount', 'like', '%' . $search . '%') // Pencarian berdasarkan jumlah transaksi
+                    ->orWhere('status', 'like', '%' . $search . '%') // Pencarian berdasarkan status
+                    ->orWhere('payment_method', 'like', '%' . $search . '%'); // Pencarian berdasarkan metode pembayaran
+            })
+            ->latest()
+            ->paginate(5);
+
+        $users = User::all();
+        $schedules = Schedule::all();
+
+        return view('admin.transactions.index', compact('transactions', 'users', 'schedules', 'search'));
     }
+
 
     // Menampilkan form tambah transaksi
     public function create()
@@ -29,12 +50,18 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'schedule_id' => 'nullable|exists:schedules,id',
+            'user_id' => 'required|exists:users,id|uuid',
+            'schedule_id' => 'nullable|exists:schedules,id|uuid',
             'amount' => 'required|numeric|min:0',
             'status' => 'required|in:pending,success,failed',
             'payment_method' => 'required|string|max:50',
         ]);
+
+        // Cek apakah jadwal yang dipilih cocok dengan user
+        $schedule = Schedule::find($request->schedule_id);
+        if ($schedule->user_id != $request->user_id) {
+            return redirect()->back()->withErrors(['schedule_id' => 'The selected schedule does not belong to this user.']);
+        }
 
         Transaction::create([
             'id' => Str::uuid(),
@@ -70,7 +97,7 @@ class TransactionController extends Controller
         $transaction = Transaction::findOrFail($id);
 
         $request->validate([
-            'user_id' => 'required|exists:users,id',
+            'user_id' => 'nullable|exists:users,id',
             'schedule_id' => 'nullable|exists:schedules,id',
             'amount' => 'required|numeric|min:0',
             'status' => 'required|in:pending,success,failed',
