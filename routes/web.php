@@ -4,7 +4,9 @@ use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WasteController;
+use App\Http\Controllers\RegionController;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\TransactionController;
@@ -53,16 +55,17 @@ Route::resource('admin/users', AdminUserController::class);
 // Route::get('/users/{id}', [AdminUserController::class, 'show'])->name('admin.users.show');
 // Route::delete('/users/{id}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
 
-// halaman admin set sampah
+// halaman admin untuk limbah
 Route::resource('admin/wastes', WasteController::class);
 
-// halaman admin set jadwal
+// halaman admin untuk jadwal
 Route::resource('admin/schedules', ScheduleController::class);
 
-// halaman admin set kendaraan
+// halaman admin untuk kendaraan
 Route::resource('admin/vehicles', VehicleController::class);
 
-// halaman admin set transaksi
+// halaman admin untuk transaksi
+Route::resource('admin/transactions', TransactionController::class);
 
 // Route untuk mendapatkan schedules berdasarkan user_id
 Route::get('/schedules-transactions', function (Request $request) {
@@ -75,4 +78,8 @@ Route::get('/schedules-transactions', function (Request $request) {
     ]);
 });
 
-Route::resource('admin/transactions', TransactionController::class);
+// route admin untuk feedback
+Route::resource('admin/feedback', FeedbackController::class);
+
+// route admin untuk region
+Route::resource('admin/regions', RegionController::class);

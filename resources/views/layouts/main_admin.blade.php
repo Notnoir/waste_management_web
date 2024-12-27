@@ -93,8 +93,8 @@
                 <ul class="space-y-2 font-medium">
                     <li>
                         <a href="{{ route('admin.dashboard') }}"
-                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#21c434] hover:text-white dark:hover:bg-gray-700 group">
-                            <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
+                            class="flex items-center p-2 rounded-lg hover:bg-[#21c434] hover:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('admin.dashboard') ? 'bg-[#21c434] text-white' : 'text-gray-900 dark:text-white' }}">
+                            <svg class="w-5 h-5 transition duration-75 {{ request()->routeIs('admin.dashboard') ? 'text-white' : 'text-gray-500' }} dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                 viewBox="0 0 22 21">
                                 <path
@@ -107,8 +107,8 @@
                     </li>
                     <li>
                         <a href="{{ route('users.index') }}"
-                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#21c434] hover:text-white dark:hover:bg-gray-700 group">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#21c434] hover:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('users.index') ? 'bg-[#21c434] text-white' : 'text-gray-900 dark:text-white' }}">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 {{ request()->routeIs('users.index') ? 'text-white' : 'text-gray-500' }} dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                 viewBox="0 0 20 18">
                                 <path
@@ -119,8 +119,8 @@
                     </li>
                     <li>
                         <a href="{{ route('wastes.index') }}"
-                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#21c434] hover:text-white dark:hover:bg-gray-700 group">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#21c434] hover:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('wastes.index') ? 'bg-[#21c434] text-white' : 'text-gray-900 dark:text-white' }}">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 {{ request()->routeIs('wastes.index') ? 'text-white' : 'text-gray-500' }} dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
@@ -135,8 +135,8 @@
                     </li>
                     <li>
                         <a href="{{ route('schedules.index') }}"
-                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#21c434] hover:text-white dark:hover:bg-gray-700 group">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#21c434] hover:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('schedules.index') ? 'bg-[#21c434] text-white' : 'text-gray-900 dark:text-white' }}">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 {{ request()->routeIs('schedules.index') ? 'text-white' : 'text-gray-500' }} dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
@@ -148,8 +148,8 @@
                     </li>
                     <li>
                         <a href="{{ route('vehicles.index') }}"
-                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#21c434] hover:text-white dark:hover:bg-gray-700 group">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#21c434] hover:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('vehicles.index') ? 'bg-[#21c434] text-white' : 'text-gray-900 dark:text-white' }}">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 {{ request()->routeIs('vehicles.index') ? 'text-white' : 'text-gray-500' }} dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
@@ -162,8 +162,8 @@
                     </li>
                     <li>
                         <a href="{{ route('transactions.index') }}"
-                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#21c434] hover:text-white dark:hover:bg-gray-700 group">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#21c434] hover:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('transactions.index') ? 'bg-[#21c434] text-white' : 'text-gray-900 dark:text-white' }}">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 {{ request()->routeIs('transactions.index') ? 'text-white' : 'text-gray-500' }} dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                 viewBox="0 0 20 20">
                                 <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z" />
@@ -173,6 +173,31 @@
                                     d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z" />
                             </svg>
                             <span class="flex-1 ms-3 whitespace-nowrap">Transaksi</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('feedback.index') }}"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#21c434] hover:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('feedback.index') ? 'bg-[#21c434] text-white' : 'text-gray-900 dark:text-white' }}">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 {{ request()->routeIs('feedback.index') ? 'text-white' : 'text-gray-500' }} dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                            </svg>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Feedback</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('regions.index') }}"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#21c434] hover:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('regions.index') ? 'bg-[#21c434] text-white' : 'text-gray-900 dark:text-white' }}">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 {{ request()->routeIs('regions.index') ? 'text-white' : 'text-gray-500' }} dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M4 4a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2v14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2V5a1 1 0 0 1-1-1Zm5 2a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-1Zm-5 4a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1h-1Zm-3 4a2 2 0 0 0-2 2v3h2v-3h2v3h2v-3a2 2 0 0 0-2-2h-2Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Wilayah</span>
                         </a>
                     </li>
                 </ul>

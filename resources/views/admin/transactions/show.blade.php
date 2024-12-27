@@ -23,7 +23,7 @@
         <!-- Content -->
         <div class="p-6 space-y-6">
             <!-- Detail Pengguna -->
-            <div>
+            <div class="border-b-2 border-dashed pb-6">
                 <h3 class="text-2xl font-semibold text-gray-800 mb-4">Detail Pengguna</h3>
                 <div class="grid grid-cols-2 gap-6">
                     <div>
@@ -46,7 +46,7 @@
             </div>
 
             <!-- Informasi Jadwal -->
-            <div>
+            <div class="border-b-2 border-dashed pb-6">
                 <h3 class="text-2xl font-semibold text-gray-800 mb-4">Informasi Jadwal</h3>
                 <div class="grid grid-cols-2 gap-6">
                     <div>
