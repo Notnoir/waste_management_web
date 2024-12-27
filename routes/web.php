@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WasteController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminDashboardController;
 
@@ -31,6 +32,10 @@ Route::get('/jenis-wastes', function () {
     return view('admin.jenis_sampah.index');
 });
 
+Route::get('/error-404', function () {
+    return view('err-page-404');
+})->name('error-404');
+
 // halaman admin
 Route::get('/dashboard-admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/transactions', [AdminDashboardController::class, 'transactions'])->name('admin.transactions');
@@ -46,3 +51,6 @@ Route::resource('admin/users', AdminUserController::class);
 
 // halaman admin set sampah
 Route::resource('admin/wastes', WasteController::class);
+
+// halaman admin set jadwal
+Route::resource('admin/schedules', ScheduleController::class);

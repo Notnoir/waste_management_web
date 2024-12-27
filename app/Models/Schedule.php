@@ -39,6 +39,11 @@ class Schedule extends Model
         'status' => 'pending',
     ];
 
+    // Casts
+    protected $casts = [
+        'pickup_date' => 'date', // Pastikan pickup_date dikonversi ke instance Date/Carbon
+    ];
+
     /**
      * Relasi: Schedule dimiliki oleh satu User.
      */
