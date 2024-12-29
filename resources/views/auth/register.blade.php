@@ -17,13 +17,17 @@
         </div>
 
         <!-- Form Register -->
-        <form action="#" method="POST" class="space-y-4">
+        <form action="{{ route('register') }}" method="POST" class="space-y-4">
+            @csrf
             <!-- Input Nama Lengkap -->
             <div>
                 <label for="name" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
                 <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap Anda"
                     class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
                     required />
+                @error('name')
+                <span class="text-red-500">{{ $message }}</span>
+                @enderror
             </div>
 
             <!-- Input Email -->
@@ -32,6 +36,9 @@
                 <input type="email" id="email" name="email" placeholder="Masukkan email Anda"
                     class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
                     required />
+                @error('email')
+                <span class="text-red-500">{{ $message }}</span>
+                @enderror
             </div>
 
             <!-- Input Password -->
@@ -40,14 +47,22 @@
                 <input type="password" id="password" name="password" placeholder="Buat password"
                     class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
                     required />
+                @error('password')
+                <span class="text-red-500">{{ $message }}</span>
+                @enderror
             </div>
 
             <!-- Input Konfirmasi Password -->
             <div>
-                <label for="confirm_password" class="block text-gray-700 font-medium mb-2">Konfirmasi Password</label>
-                <input type="password" id="confirm_password" name="confirm_password" placeholder="Ulangi password Anda"
+                <label for="password_confirmation" class="block text-gray-700 font-medium mb-2">Konfirmasi
+                    Password</label>
+                <input type="password" id="password_confirmation" name="password_confirmation"
+                    placeholder="Ulangi password Anda"
                     class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
                     required />
+                @error('password_confirmation')
+                <span class="text-red-500">{{ $message }}</span>
+                @enderror
             </div>
 
             <!-- Tombol Register -->
@@ -62,7 +77,7 @@
         <!-- Link Login -->
         <p class="text-center text-sm text-gray-600 mt-6">
             Sudah punya akun?
-            <a href="#" class="text-green-500 hover:underline">Masuk di sini</a>
+            <a href="/login" class="text-green-500 hover:underline">Masuk di sini</a>
         </p>
     </div>
 </div @endsection

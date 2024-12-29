@@ -48,7 +48,14 @@
                         </li>
                         <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Settings</a>
                         </li>
-                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Logout</a></li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button
+                                    class="block px-4 w-full py-2 text-sm text-red-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    type="submit"><span class="flex justify-start">Logout</span></button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>

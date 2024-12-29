@@ -1,8 +1,15 @@
 @extends('layouts.main_admin')
 
 @section('content')
+
 <!-- Content -->
 <div class="p-3 space-y-6">
+    @if(session('success'))
+    <div class="bg-green-100 text-green-700 border border-green-400 p-4 rounded mb-6">
+        {{ session('success') }}
+    </div>
+    @endif
+
     <!-- Stats -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-white shadow rounded-xl p-4">

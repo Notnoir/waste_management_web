@@ -11,7 +11,7 @@
 
 <body>
     <div class="text-center">
-        <h1>INI HALAMAN ERROR 404</h1>
+        <h1>INI HALAMAN unauthorized</h1>
     </div>
 </body>
 

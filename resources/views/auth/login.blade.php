@@ -18,13 +18,17 @@
         </div>
 
         <!-- Form Login -->
-        <form action="#" method="POST" class="space-y-6">
+        <form action="{{ route('login') }}" method="POST" class="space-y-6">
+            @csrf
             <!-- Input Email -->
             <div>
                 <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
                 <input type="email" id="email" name="email" placeholder="Masukkan email Anda"
                     class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
                     required />
+                @error('email')
+                <span class="text-red-500">{{ $message }}</span>
+                @enderror
             </div>
 
             <!-- Input Password -->
@@ -33,6 +37,9 @@
                 <input type="password" id="password" name="password" placeholder="Masukkan password Anda"
                     class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
                     required />
+                @error('password')
+                <span class="text-red-500">{{ $message }}</span>
+                @enderror
             </div>
 
             <!-- Checkbox Remember Me -->
@@ -56,7 +63,7 @@
         <!-- Link Daftar -->
         <p class="text-center text-sm text-gray-600 mt-6">
             Belum punya akun?
-            <a href="/dashboard" class="text-green-500 hover:underline">Daftar sekarang</a>
+            <a href="/register" class="text-green-500 hover:underline">Daftar sekarang</a>
         </p>
     </div>
 </div>
