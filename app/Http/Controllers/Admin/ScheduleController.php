@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Schedule;
 use App\Models\User;
 use App\Models\Waste;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ScheduleController extends Controller
 {
@@ -80,7 +81,7 @@ class ScheduleController extends Controller
             // 'pickup_date' => 'required|date|after_or_equal:today',
             'pickup_date' => 'required|date|date_format:Y-m-d',
             'quantity' => 'required|numeric|min:0.1',
-            'status' => 'required|in:pending,completed,cancelled',
+            'status' => 'required|in:in_progress,pending,completed,cancelled',
         ]);
 
         $schedule->update($request->all());

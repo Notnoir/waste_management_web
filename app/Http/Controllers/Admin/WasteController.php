@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Waste;
-use App\Models\WasteCategory;
 use Illuminate\Http\Request;
+use App\Models\WasteCategory;
+use App\Http\Controllers\Controller;
 
 class WasteController extends Controller
 {

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Transaction;
-use App\Models\Schedule;
 use App\Models\Waste;
+use App\Models\Schedule;
+use App\Models\Transaction;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminDashboardController extends Controller
 {

@@ -2,25 +2,25 @@
 
 @section('content')
 <!-- Content -->
-<div class="p-6 space-y-6">
+<div class="p-3 space-y-6">
     <!-- Stats -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white shadow rounded p-4">
+        <div class="bg-white shadow rounded-xl p-4">
             <h3 class="text-lg font-semibold text-gray-700">Total Pengguna</h3>
             <p class="text-2xl font-bold text-[#21c434]">{{ $totalUsers }}</p>
         </div>
-        <div class="bg-white shadow rounded p-4">
+        <div class="bg-white shadow rounded-xl p-4">
             <h3 class="text-lg font-semibold text-gray-700">Total Transaksi</h3>
             <p class="text-2xl font-bold text-[#21c434]">Rp {{ number_format($totalTransactions, 0, ',', '.') }}</p>
         </div>
-        <div class="bg-white shadow rounded p-4">
+        <div class="bg-white shadow rounded-xl p-4">
             <h3 class="text-lg font-semibold text-gray-700">Pengambilan Selesai</h3>
             <p class="text-2xl font-bold text-[#21c434]">{{ $completedPickups }}</p>
         </div>
     </div>
 
     <!-- Table -->
-    <div class="bg-white shadow rounded overflow-x-auto">
+    <div class="bg-white shadow rounded-xl overflow-x-auto">
         <div class="p-4 border-b">
             <h3 class="text-lg font-semibold">Transaksi Terbaru</h3>
         </div>
@@ -36,7 +36,7 @@
             </thead>
             <tbody>
                 @forelse ($recentTransactions as $index => $transaction)
-                <tr>
+                <tr class="hover:bg-gray-100">
                     <td class="px-4 py-2 border-b">{{ $index + 1 }}</td>
                     <td class="px-4 py-2 border-b">{{ $transaction->user->name }}</td>
                     <td class="px-4 py-2 border-b">Rp {{ number_format($transaction->amount, 0, ',', '.') }}</td>

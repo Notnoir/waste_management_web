@@ -71,7 +71,7 @@
                     <td class="px-6 py-3 border-b">{{ $schedule->quantity }} Kg</td>
                     <td class="px-6 py-3 border-b">
                         <span
-                            class="{{ $schedule->status == 'completed' ? 'bg-green-100 text-green-600' : ($schedule->status == 'pending' ? 'bg-yellow-100 text-yellow-600' : 'bg-red-100 text-red-600') }} px-2 py-1 text-sm rounded">
+                            class="{{ $schedule->status == 'completed' ? 'bg-green-100 text-green-600' : ($schedule->status == 'pending' ? 'bg-yellow-100 text-yellow-600' : ($schedule->status == 'in_progress' ? 'bg-yellow-100 text-yellow-600' : 'bg-red-100 text-red-600'))  }} px-2 py-1 text-sm rounded">
                             {{ ucfirst($schedule->status) }}
                         </span>
                     </td>
@@ -281,6 +281,9 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                         <select name="status" id="edit-status"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option value="in_progress" {{ old('status', $schedule->status) == 'in_progress' ?
+                                'selected' : ''
+                                }}>Progress</option>
                             <option value="pending" {{ old('status', $schedule->status) == 'pending' ? 'selected' : ''
                                 }}>Pending</option>
                             <option value="completed" {{ old('status', $schedule->status) == 'completed' ? 'selected' :

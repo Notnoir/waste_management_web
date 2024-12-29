@@ -49,7 +49,7 @@
 
     <!-- Tabel Transaksi -->
     <div class="bg-white shadow rounded overflow-x-auto mt-4">
-        <table class="w-full text-left border-collapse">
+        <table class="w-full table-auto text-left border-collapse">
             <thead class="bg-gray-50">
                 <tr>
                     <th class="px-6 py-3 border-b">#</th>
@@ -75,7 +75,7 @@
                         </span>
                     </td>
                     <td class="px-6 py-3 border-b">{{ $transaction->payment_method }}</td>
-                    <td class="px-6 py-3 border-b text-center space-x-2">
+                    <td class="flex px-6 py-3 border-b text-center space-x-5">
                         <a href="{{ route('transactions.show', $transaction->id) }}"
                             class="text-blue-500 hover:underline">Detail</a>
                         <button data-modal-target="edit-modal" data-modal-toggle="edit-modal"
