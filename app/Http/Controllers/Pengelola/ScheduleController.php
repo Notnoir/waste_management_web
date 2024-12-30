@@ -18,7 +18,7 @@ class ScheduleController extends Controller
         // Ambil semua jenis sampah
         $wastes = Waste::all();
 
-        $schedules = Schedule::with(['user', 'waste'])->orderBy('pickup_date')->get();
+        $schedules = Schedule::with(['user', 'waste'])->orderBy('pickup_date')->paginate(5);
 
         return view('pengelola.schedules.index', compact('users', 'wastes', 'schedules'));
     }
@@ -34,7 +34,7 @@ class ScheduleController extends Controller
 
         Schedule::create($request->all());
 
-        return redirect()->route('schedules.index')->with('success', 'Jadwal berhasil dibuat.');
+        return redirect()->route('pengelola.schedules.index')->with('success', 'Jadwal berhasil dibuat.');
     }
 
     public function updateStatus(Request $request, Schedule $schedule)

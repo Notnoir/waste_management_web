@@ -59,6 +59,11 @@
                                 class="text-white bg-[#31e146] hover:bg-[#3fc04e] focus:ring-4 font-medium rounded-lg text-sm px-5 py-2">Proses</button>
                         </form>
                         @endif
+                        @if ($item->status !== 'pending')
+                        <button
+                            class="text-white bg-[#31e146] hover:bg-[#3fc04e] focus:ring-4 font-medium rounded-lg text-sm px-5 py-2"
+                            disabled>Proses</button>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

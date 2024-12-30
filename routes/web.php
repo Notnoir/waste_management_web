@@ -6,10 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RoleMiddleware;
 use App\Http\Controllers\AuthController;
 
-// pengelola controllers
-use App\Http\Controllers\Pengelola\ScheduleController as PengelolaScheduleController;
-use App\Http\Controllers\Pengelola\DashboardController as PengelolaDashboardController;
-
 // admin controllers
 use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\admin\AdminDashboardController;
@@ -17,8 +13,16 @@ use App\Http\Controllers\admin\WasteController as AdminWasteController;
 use App\Http\Controllers\admin\RegionController as AdminRegionController;
 use App\Http\Controllers\admin\VehicleController as AdminVehicleController;
 use App\Http\Controllers\admin\FeedbackController as AdminFeedbackController;
+
+// pengelola controllers
 use App\Http\Controllers\admin\ScheduleController as AdminScheduleController;
 use App\Http\Controllers\admin\TransactionController as AdminTransactionController;
+use App\Http\Controllers\Pengelola\DailyReportController as PengelolaDailyReportController;
+use App\Http\Controllers\Pengelola\VehicleController as PengelolaVehicleController;
+use App\Http\Controllers\Pengelola\ScheduleController as PengelolaScheduleController;
+use App\Http\Controllers\Pengelola\DashboardController as PengelolaDashboardController;
+use App\Http\Controllers\Pengelola\PickupAssignmentController as PengelolaPickupAssignmentController;
+use App\Http\Controllers\Pengelola\FeedbackController as PengelolaFeedbackController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login_view');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
@@ -80,6 +84,19 @@ Route::middleware([RoleMiddleware::class . ':pengelola'])->group(function () {
     // route pengelola untuk jadwal
     Route::resource('pengelola/schedules', PengelolaScheduleController::class, ['as' => 'pengelola']);
     Route::post('pengelola/schedules/{schedule}/status', [PengelolaScheduleController::class, 'updateStatus'])->name('schedules.updateStatus');
+
+    // route pengelola untuk kendaraan
+    Route::resource('pengelola/vehicles', PengelolaVehicleController::class, ['as' => 'pengelola']);
+
+    // route pengelola untuk penugasan
+    Route::resource('pengelola/assignments', PengelolaPickupAssignmentController::class, ['as' => 'pengelola']);
+    Route::patch('pengelola/assignments/{assignment}/status', [PengelolaPickupAssignmentController::class, 'updateStatus'])->name('assignments.updateStatus');
+
+    // route Pengelola untuk feedback
+    Route::resource('Pengelola/feedback', PengelolaFeedbackController::class, ['as' => 'pengelola']);
+
+    // route pengelola untuk daily report
+    Route::get('/pengelola/daily-report', [PengelolaDailyReportController::class, 'dailyReport'])->name('pengelola.dailyReport');
 });
 
 //akses warga

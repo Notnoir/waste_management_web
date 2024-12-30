@@ -74,4 +74,9 @@ class Waste extends Model
     {
         return $this->hasMany(Schedule::class);
     }
+
+    public function users()
+    {
+        return $this->hasManyThrough(User::class, Schedule::class, 'waste_id', 'id', 'id', 'user_id');
+    }
 }
