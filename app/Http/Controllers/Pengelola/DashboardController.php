@@ -43,6 +43,12 @@ class DashboardController extends Controller
     public function updateScheduleStatus(Request $request, $id)
     {
         $schedule = Schedule::findOrFail($id);
+
+        // Validasi data
+        $request->validate([
+            'status' => 'required|in:pending,in_progress',
+        ]);
+
         $schedule->status = $request->status;
         $schedule->save();
 

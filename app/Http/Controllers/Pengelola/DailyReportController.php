@@ -18,47 +18,24 @@ class DailyReportController extends Controller
     {
         $today = Carbon::today();
 
-        // Wilayah Pengelola
-        $managerRegion = Auth::user()->region_id;;
-
         // Data Laporan
-        $totalSchedules = Schedule::whereHas('user', function ($query) use ($managerRegion) {
-            $query->where('region_id', $managerRegion);
-        })->whereDate('pickup_date', $today)->count();
-
-        $completedSchedules = Schedule::whereHas('user', function ($query) use ($managerRegion) {
-            $query->where('region_id', $managerRegion);
-        })->whereDate('pickup_date', $today)->where('status', 'completed')->count();
-
-        $pendingSchedules = Schedule::whereHas('user', function ($query) use ($managerRegion) {
-            $query->where('region_id', $managerRegion);
-        })->whereDate('pickup_date', $today)->where('status', 'pending')->count();
-
-        $totalWasteVolume = Schedule::whereHas('user', function ($query) use ($managerRegion) {
-            $query->where('region_id', $managerRegion);
-        })->whereDate('pickup_date', $today)->sum('quantity');
-
+        $totalSchedules = Schedule::whereDate('pickup_date', $today)->count();
+        $completedSchedules = Schedule::whereDate('pickup_date', $today)
+            ->where('status', 'completed')
+            ->count();
+        $pendingSchedules = Schedule::whereDate('pickup_date', $today)
+            ->where('status', 'pending')
+            ->count();
+        $totalWasteVolume = Schedule::whereDate('pickup_date', $today)->sum('quantity');
         $wasteByType = Waste::join('schedules', 'wastes.id', '=', 'schedules.waste_id')
-            ->whereHas('schedules.user', function ($query) use ($managerRegion) {
-                $query->where('region_id', $managerRegion);
-            })
             ->whereDate('schedules.pickup_date', $today)
             ->select('wastes.type', DB::raw('SUM(schedules.quantity) as total'))
             ->groupBy('wastes.type')
             ->get();
+        $averageRating = Feedback::whereDate('created_at', $today)->avg('rating');
+        $totalTransactions = Transaction::whereDate('created_at', $today)->sum('amount');
 
-        $averageRating = Feedback::whereHas('schedule', function ($query) use ($managerRegion) {
-            $query->whereHas('user', function ($subQuery) use ($managerRegion) {
-                $subQuery->where('region_id', $managerRegion);
-            });
-        })->whereDate('created_at', $today)->avg('rating');
-
-        $totalTransactions = Transaction::whereHas('schedule', function ($query) use ($managerRegion) {
-            $query->whereHas('user', function ($subQuery) use ($managerRegion) {
-                $subQuery->where('region_id', $managerRegion);
-            });
-        })->whereDate('created_at', $today)->sum('amount');
-
+        // Kirim Data ke View
         return view('pengelola.daily_report', compact(
             'totalSchedules',
             'completedSchedules',

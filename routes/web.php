@@ -13,16 +13,18 @@ use App\Http\Controllers\admin\WasteController as AdminWasteController;
 use App\Http\Controllers\admin\RegionController as AdminRegionController;
 use App\Http\Controllers\admin\VehicleController as AdminVehicleController;
 use App\Http\Controllers\admin\FeedbackController as AdminFeedbackController;
-
-// pengelola controllers
 use App\Http\Controllers\admin\ScheduleController as AdminScheduleController;
 use App\Http\Controllers\admin\TransactionController as AdminTransactionController;
-use App\Http\Controllers\Pengelola\DailyReportController as PengelolaDailyReportController;
+
+// pengelola controllers
+use App\Http\Controllers\Pengelola\WasteController as PengelolaWasteController;
 use App\Http\Controllers\Pengelola\VehicleController as PengelolaVehicleController;
+use App\Http\Controllers\Pengelola\FeedbackController as PengelolaFeedbackController;
 use App\Http\Controllers\Pengelola\ScheduleController as PengelolaScheduleController;
 use App\Http\Controllers\Pengelola\DashboardController as PengelolaDashboardController;
+use App\Http\Controllers\Pengelola\DailyReportController as PengelolaDailyReportController;
 use App\Http\Controllers\Pengelola\PickupAssignmentController as PengelolaPickupAssignmentController;
-use App\Http\Controllers\Pengelola\FeedbackController as PengelolaFeedbackController;
+use App\Http\Controllers\Pengelola\RegionController as PengelolaRegionController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login_view');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
@@ -97,6 +99,12 @@ Route::middleware([RoleMiddleware::class . ':pengelola'])->group(function () {
 
     // route pengelola untuk daily report
     Route::get('/pengelola/daily-report', [PengelolaDailyReportController::class, 'dailyReport'])->name('pengelola.dailyReport');
+
+    // route pengelola untuk limbah
+    Route::resource('pengelola/wastes', PengelolaWasteController::class, ['as' => 'pengelola']);
+
+    // route pengelola untuk region
+    Route::resource('pengelola/regions', PengelolaRegionController::class, ['as' => 'pengelola']);
 });
 
 //akses warga
@@ -115,7 +123,7 @@ Route::get('/unauthorized', function () {
 
 
 Route::get('/', function () {
-    return view('unauthorized');
+    return view('welcome');
 });
 
 // Route::get('/dashboard-pengelola', function () {
