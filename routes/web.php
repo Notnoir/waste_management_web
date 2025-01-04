@@ -25,4 +25,6 @@ Route::get('/profile', function () {
     return view('warga.profile');
 });
 
-
+Route::get('/dashboard-guest', function () {
+    return view('guest.dashboard');
+});
