@@ -35,9 +35,9 @@
                 </a>
                 <ul class="space-y-2 font-medium`x">
                     <li>
-                        <a href="#"
-                            class="flex items-center p-2 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                            <svg class="w-5 h-5 text-white transition group-hover:text-[#21c434] duration-75 dark:text-gray-400 dark:group-hover:text-white"
+                        <a href="{{ route('dashboard.warga') }}"
+                            class="flex items-center p-2 rounded-lg {{ request()->routeIs('dashboard.warga') ? 'bg-white text-gray-900' : 'text-white dark:text-white hover:bg-white hover:text-gray-900 dark:hover:bg-gray-700' }}">
+                            <svg class="w-5 h-5 transition duration-75 {{ request()->routeIs('dashboard.warga') ? 'text-[#21c434]' : 'text-white dark:text-gray-400' }} group-hover:text-[#21c434]"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                 viewBox="0 0 22 21">
                                 <path
@@ -49,18 +49,16 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="flex items-center p-2 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                            <svg class="w-5 h-5 text-white transition group-hover:text-[#21c434] duration-75 dark:text-gray-400 dark:group-hover:text-white"
+                        <a href="{{ route('warga.pickups.index') }}"
+                            class="flex items-center p-2 rounded-lg {{ request()->routeIs('warga.pickups.index') ? 'bg-white text-gray-900' : 'text-white dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700' }}">
+                            <svg class="w-5 h-5 transition duration-75 {{ request()->routeIs('warga.pickups.index') ? 'text-[#21c434]' : 'text-white dark:text-gray-400' }} group-hover:text-[#21c434]"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                 viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2"
                                     d="M13 7h6l2 4m-8-4v8m0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v9h2m8 0H9m4 0h2m4 0h2v-4m0 0h-5m3.5 5.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-10 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
                             </svg>
-
-
-                            <span class="flex-1 ms-3 whitespace-nowrap">Jadwal Pickup</span>
+                            <span class="ms-3">Pickup</span>
                         </a>
                     </li>
                     <li>
@@ -106,60 +104,32 @@
                             <span class="flex-1 ms-3 whitespace-nowrap">Feedback</span>
                         </a>
                     </li>
+                    <li class="border-t py-3 mt-3">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button
+                                class="flex items-center w-full p-2 text-white hover:text-red-600 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
+
+                                <svg class="w-5 h-5 text-white transition group-hover:text-red-600 duration-75 dark:text-gray-400 dark:group-hover:text-white"
+                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2" />
+                                </svg>
+
+                                <span class="ms-3 whitespace-nowrap">Logout</span>
+                            </button>
+                        </form>
+
+                    </li>
                 </ul>
             </div>
-            </div>
         </aside>
-        <div class="flex justify-end items-center fixed top-3 left-0 right-7">
-            <div class="flex items-center ms-3">
-                <div class="flex">
-                    <button type="button" class="flex items-center gap-4 text-sm" aria-expanded="false"
-                        data-dropdown-toggle="dropdown-user">
-                        <span class="sr-only">Open user menu</span>
-                        <img class="w-8 h-8 rounded-full"
-                            src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
-                        <span>Neil Sims</span>
-                    </button>
-                </div>
-                <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
-                    id="dropdown-user">
-                    <div class="px-4 py-3" role="none">
-                        <p class="text-sm text-gray-900 dark:text-white" role="none">
-                            Neil Sims
-                        </p>
-                        <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                            neil.sims@flowbite.com
-                        </p>
-                    </div>
-                    <ul class="py-1" role="none">
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                role="menuitem">Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                role="menuitem">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                role="menuitem">Earnings</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                role="menuitem">Sign out</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </header>
     <main>
         <div class="p-4 sm:ml-64">
-            <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+            <div class="p-4 rounded-lg dark:border-gray-700  ">
                 @yield('content')
             </div>
         </div>
