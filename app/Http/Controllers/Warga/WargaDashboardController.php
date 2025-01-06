@@ -26,7 +26,7 @@ class WargaDashboardController extends Controller
         $activeSchedules = Schedule::where('user_id', $user->id)
             ->where('status', 'pending')
             ->count();
-        $totalPoints = $user->points ?? 0; // Jika ada sistem poin
+        $totalBalance = $user->balance ?? 0; // Jika ada sistem poin
 
         // Jadwal Pickup Aktif
         $schedules = Schedule::where('user_id', $user->id)
@@ -45,7 +45,7 @@ class WargaDashboardController extends Controller
             'user' => $user,
             'totalTransactions' => $totalTransactions,
             'activeSchedules' => $activeSchedules,
-            'totalPoints' => $totalPoints,
+            'totalBalance' => $totalBalance,
             'schedules' => $schedules,
             'notifications' => $notifications,
         ]);

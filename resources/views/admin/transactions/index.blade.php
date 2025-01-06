@@ -54,6 +54,7 @@
                 <tr>
                     <th class="px-6 py-3 border-b">#</th>
                     <th class="px-6 py-3 border-b">User</th>
+                    <th class="px-6 py-3 border-b">Tipe Transaksi</th>
                     <th class="px-6 py-3 border-b">Jadwal</th>
                     <th class="px-6 py-3 border-b">Jumlah</th>
                     <th class="px-6 py-3 border-b">Status</th>
@@ -66,7 +67,20 @@
                 <tr class="hover:bg-gray-50">
                     <td class="px-6 py-3 border-b">{{ $loop->iteration }}</td>
                     <td class="px-6 py-3 border-b font-medium text-gray-800">{{ $transaction->user->name }}</td>
-                    <td class="px-6 py-3 border-b">{{ $transaction->schedule->pickup_date->format('d M Y') }}</td>
+                    <td class="px-6 py-3 border-b font-medium text-gray-800">
+                        @if($transaction->type == 'top_up')
+                        Top Up
+                        @else
+                        Pembayaran Pickup
+                        @endif
+                    </td>
+                    <td class="px-6 py-3 border-b">
+                        @if($transaction->schedule && $transaction->schedule->pickup_date)
+                        {{ $transaction->schedule->pickup_date->format('d M Y') }}
+                        @else
+                        -
+                        @endif
+                    </td>
                     <td class="px-6 py-3 border-b">Rp {{ number_format($transaction->amount, 0, ',', '.') }}</td>
                     <td class="px-6 py-3 border-b">
                         <span
@@ -80,7 +94,7 @@
                             class="text-blue-500 hover:underline">Detail</a>
                         <button data-modal-target="edit-modal" data-modal-toggle="edit-modal"
                             data-id="{{ $transaction->id }}" data-user="{{ $transaction->user->name }}"
-                            data-schedule="{{ $transaction->schedule->pickup_date }}"
+                            data-schedule="{{ optional($transaction->schedule)->pickup_date }}"
                             data-amount="{{ $transaction->amount }}" data-status="{{ $transaction->status }}"
                             data-payment_method="{{ $transaction->payment_method }}"
                             class="text-yellow-300 hover:underline">
@@ -147,6 +161,20 @@
                             @endforeach
                         </select>
                         @error('user_id') <span class="text-red-600">{{ $message }}</span> @enderror
+                    </div>
+
+                    <!-- Transaction Type -->
+                    <div class="col-span-2">
+                        <label for="type"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Transaction
+                            Type</label>
+                        <select name="type" id="type"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            required>
+                            <option value="top_up">Top Up</option>
+                            <option value="pickup_payment">Pickup Payment</option>
+                        </select>
+                        @error('type') <span class="text-red-600">{{ $message }}</span> @enderror
                     </div>
 
                     <!-- Schedule -->

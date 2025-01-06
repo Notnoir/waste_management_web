@@ -31,6 +31,7 @@ class Transaction extends Model
     protected $fillable = [
         'id',
         'user_id',
+        'type',
         'schedule_id',
         'amount',
         'status',

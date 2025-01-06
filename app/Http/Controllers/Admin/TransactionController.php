@@ -53,21 +53,23 @@ class TransactionController extends Controller
         $request->validate([
             'user_id' => 'required|exists:users,id|uuid',
             'schedule_id' => 'nullable|exists:schedules,id|uuid',
+            'type' => 'required|in:top_up,pickup_payment',
             'amount' => 'required|numeric|min:0',
             'status' => 'required|in:pending,success,failed',
             'payment_method' => 'required|string|max:50',
         ]);
 
         // Cek apakah jadwal yang dipilih cocok dengan user
-        $schedule = Schedule::find($request->schedule_id);
-        if ($schedule->user_id != $request->user_id) {
-            return redirect()->back()->withErrors(['schedule_id' => 'The selected schedule does not belong to this user.']);
-        }
+        // $schedule = Schedule::find($request->schedule_id);
+        // if ($schedule->user_id != $request->user_id) {
+        //     return redirect()->back()->withErrors(['schedule_id' => 'The selected schedule does not belong to this user.']);
+        // }
 
         Transaction::create([
             'id' => Str::uuid(),
             'user_id' => $request->user_id,
             'schedule_id' => $request->schedule_id,
+            'type' => $request->type,
             'amount' => $request->amount,
             'status' => $request->status,
             'payment_method' => $request->payment_method,
