@@ -7,8 +7,8 @@ use App\Http\Middleware\RoleMiddleware;
 use App\Http\Controllers\AuthController;
 
 // admin controllers
+use App\Http\Controllers\Warga\FeedbackController as WargaFeedbackController;
 use App\Http\Controllers\admin\AdminUserController;
-use App\Http\Controllers\Warga\TransactionController as WargaTransactionController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\Warga\WargaDashboardController;
 use App\Http\Controllers\admin\WasteController as AdminWasteController;
@@ -23,9 +23,10 @@ use App\Http\Controllers\Pengelola\WasteController as PengelolaWasteController;
 use App\Http\Controllers\Pengelola\RegionController as PengelolaRegionController;
 use App\Http\Controllers\admin\TransactionController as AdminTransactionController;
 use App\Http\Controllers\Pengelola\VehicleController as PengelolaVehicleController;
-use App\Http\Controllers\Pengelola\FeedbackController as PengelolaFeedbackController;
+use App\Http\Controllers\Warga\TransactionController as WargaTransactionController;
 
 // warga controllers
+use App\Http\Controllers\Pengelola\FeedbackController as PengelolaFeedbackController;
 use App\Http\Controllers\Pengelola\ScheduleController as PengelolaScheduleController;
 use App\Http\Controllers\Pengelola\DashboardController as PengelolaDashboardController;
 use App\Http\Controllers\Pengelola\DailyReportController as PengelolaDailyReportController;
@@ -126,6 +127,9 @@ Route::middleware([RoleMiddleware::class . ':warga'])->group(function () {
     // route untuk transaksi
     Route::resource('warga/transactions', WargaTransactionController::class, ['as' => 'warga']);
     Route::post('/warga/transactions/{transaction}/simulate', [WargaTransactionController::class, 'simulatePayment'])->name('warga.transactions.simulate');
+
+    // route untuk feedback
+    Route::resource('warga/feedback', WargaFeedbackController::class, ['as' => 'warga']);
 });
 
 // tidak memiliki akses
