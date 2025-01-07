@@ -58,22 +58,21 @@
                                     stroke-width="2"
                                     d="M13 7h6l2 4m-8-4v8m0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v9h2m8 0H9m4 0h2m4 0h2v-4m0 0h-5m3.5 5.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-10 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
                             </svg>
-                            <span class="ms-3">Pickup</span>
+                            <span class="ms-3">Penjemputan</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="flex items-center p-2 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                            <svg class="w-5 h-5 text-white transition group-hover:text-[#21c434] duration-75 dark:text-gray-400 dark:group-hover:text-white"
+                        <a href="{{ route('warga.transactions.index') }}"
+                            class="flex items-center p-2 rounded-lg {{ request()->routeIs('warga.transactions.index') ? 'bg-white text-gray-900' : 'text-white dark:text-white hover:bg-white hover:text-gray-900 dark:hover:bg-gray-700' }}">
+                            <svg class="w-5 h-5 transition duration-75 {{ request()->routeIs('warga.transactions.index') ? 'text-[#21c434]' : 'text-white dark:text-gray-400' }} group-hover:text-[#21c434]"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
-                                    d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2h-2v-2h2a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2h-8v16h5v2H7a1 1 0 1 1 0-2h1V2H6Z"
+                                    d="M5.617 2.076a1 1 0 0 1 1.09.217L8 3.586l1.293-1.293a1 1 0 0 1 1.414 0L12 3.586l1.293-1.293a1 1 0 0 1 1.414 0L16 3.586l1.293-1.293A1 1 0 0 1 19 3v18a1 1 0 0 1-1.707.707L16 20.414l-1.293 1.293a1 1 0 0 1-1.414 0L12 20.414l-1.293 1.293a1 1 0 0 1-1.414 0L8 20.414l-1.293 1.293A1 1 0 0 1 5 21V3a1 1 0 0 1 .617-.924ZM9 7a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H9Zm0 4a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Zm0 4a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Z"
                                     clip-rule="evenodd" />
                             </svg>
 
-
-                            <span class="flex-1 ms-3 whitespace-nowrap">Riwayat Transaksi</span>
+                            <span class="ms-3">Transaksi</span>
                         </a>
                     </li>
                     <li>
@@ -92,16 +91,16 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="flex items-center p-2 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                            <svg class="w-5 h-5 text-white transition group-hover:text-[#21c434] duration-75 dark:text-gray-400 dark:group-hover:text-white"
+                        <a href="{{ route('warga.feedback.index') }}"
+                            class="flex items-center p-2 rounded-lg {{ request()->routeIs('warga.feedback.index') ? 'bg-white text-gray-900' : 'text-white dark:text-white hover:bg-white hover:text-gray-900 dark:hover:bg-gray-700' }}">
+                            <svg class="w-5 h-5 transition duration-75 {{ request()->routeIs('warga.feedback.index') ? 'text-[#21c434]' : 'text-white dark:text-gray-400' }} group-hover:text-[#21c434]"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 fill="currentColor" viewBox="0 0 24 24">
                                 <path
                                     d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
                             </svg>
 
-                            <span class="flex-1 ms-3 whitespace-nowrap">Feedback</span>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Ulasan</span>
                         </a>
                     </li>
                     <li class="border-t py-3 mt-3">
@@ -134,7 +133,7 @@
             </div>
         </div>
     </main>
-    <footer></footer>
+
 </body>
 
 </html>

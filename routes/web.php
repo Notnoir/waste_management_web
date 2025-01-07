@@ -7,7 +7,7 @@ use App\Http\Middleware\RoleMiddleware;
 use App\Http\Controllers\AuthController;
 
 // admin controllers
-use App\Http\Controllers\Warga\PickupController as WargaPickupController;
+use App\Http\Controllers\Warga\ProfileController as WargaProfileController;
 use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\Warga\WargaDashboardController;
@@ -15,17 +15,20 @@ use App\Http\Controllers\admin\WasteController as AdminWasteController;
 use App\Http\Controllers\admin\RegionController as AdminRegionController;
 
 // pengelola controllers
+use App\Http\Controllers\Warga\PickupController as WargaPickupController;
 use App\Http\Controllers\admin\VehicleController as AdminVehicleController;
 use App\Http\Controllers\admin\FeedbackController as AdminFeedbackController;
 use App\Http\Controllers\admin\ScheduleController as AdminScheduleController;
+use App\Http\Controllers\Warga\FeedbackController as WargaFeedbackController;
 use App\Http\Controllers\Pengelola\WasteController as PengelolaWasteController;
 use App\Http\Controllers\Pengelola\RegionController as PengelolaRegionController;
 use App\Http\Controllers\admin\TransactionController as AdminTransactionController;
 use App\Http\Controllers\Pengelola\VehicleController as PengelolaVehicleController;
-use App\Http\Controllers\Pengelola\FeedbackController as PengelolaFeedbackController;
-use App\Http\Controllers\Pengelola\ScheduleController as PengelolaScheduleController;
 
 // warga controllers
+use App\Http\Controllers\Warga\TransactionController as WargaTransactionController;
+use App\Http\Controllers\Pengelola\FeedbackController as PengelolaFeedbackController;
+use App\Http\Controllers\Pengelola\ScheduleController as PengelolaScheduleController;
 use App\Http\Controllers\Pengelola\DashboardController as PengelolaDashboardController;
 use App\Http\Controllers\Pengelola\DailyReportController as PengelolaDailyReportController;
 use App\Http\Controllers\Pengelola\PickupAssignmentController as PengelolaPickupAssignmentController;
@@ -119,6 +122,20 @@ Route::middleware([RoleMiddleware::class . ':warga'])->group(function () {
     // jadwal penjemputan
     Route::resource('warga/pickups', WargaPickupController::class, ['as' => 'warga']);
     Route::post('/pickups/{id}/cancel', [WargaPickupController::class, 'cancel'])->name('pickups.cancel');
+
+    // route untuk profile
+
+    // route untuk transaksi
+    Route::resource('warga/transactions', WargaTransactionController::class, ['as' => 'warga']);
+    Route::post('/warga/transactions/{transaction}/simulate', [WargaTransactionController::class, 'simulatePayment'])->name('warga.transactions.simulate');
+
+    // route untuk feedback
+    Route::resource('warga/feedback', WargaFeedbackController::class, ['as' => 'warga']);
+
+    // route untuk profile
+    Route::get('warga/profile/show', [WargaProfileController::class, 'show'])->name('warga.profile.show');
+    Route::get('warga/profile/show/edit', [WargaProfileController::class, 'edit'])->name('warga.profile.edit');
+    Route::post('warga/profile//update', [WargaProfileController::class, 'update'])->name('warga.profile.update');
 });
 
 // tidak memiliki akses
