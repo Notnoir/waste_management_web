@@ -7,6 +7,9 @@
     <title>Document</title>
     <link rel="icon" type="image/x-icon" href="/img/logo2-putih.png">
     @vite(['resources/css/app.css','resources/js/app.js'])
+
+    {{-- animate css --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
@@ -128,11 +131,22 @@
     </header>
     <main>
         <div class="p-4 sm:ml-64">
-            <div class="p-4 rounded-lg dark:border-gray-700  ">
+            <div class="rounded-lg dark:border-gray-700  ">
                 @yield('content')
             </div>
         </div>
     </main>
+
+    <script>
+        // auto close toast
+        setTimeout(function() {
+            var toastSuccess = document.getElementById('toast-success');
+                toastSuccess.classList.add('animate__animated', 'animate__fadeOut');
+                setTimeout(function() {
+                    toastSuccess.style.display = 'none';
+                }, 2000);
+            }, 2000);
+    </script>
 
 </body>
 

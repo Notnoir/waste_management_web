@@ -6,6 +6,9 @@
     <title>EcoConnect</title>
     <link rel="icon" type="image/x-icon" href="/img/logo2-putih.png">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    {{-- animate css --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body class="bg-gray-100">
