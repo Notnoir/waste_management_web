@@ -94,6 +94,51 @@
             </tbody>
         </table>
     </div>
+
+    <!-- Tabel Jadwal -->
+    <div class="bg-white shadow rounded overflow-x-auto">
+        <div class="p-4 border-b">
+            <h3 class="text-lg font-semibold">Jadwal Tertunda</h3>
+        </div>
+        <table class="w-full text-left border-collapse">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="px-6 py-3 border-b">#</th>
+                    <th class="px-6 py-3 border-b">Warga</th>
+                    <th class="px-6 py-3 border-b">Jenis Sampah</th>
+                    <th class="px-6 py-3 border-b">Tanggal Pengambilan</th>
+                    <th class="px-6 py-3 border-b">Jumlah (Kg)</th>
+                    <th class="px-6 py-3 border-b">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($pendingSchedule as $index => $schedule)
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-3 border-b">{{ $loop->iteration }}</td>
+                    <td class="px-6 py-3 border-b font-medium text-gray-800">{{ $schedule->user->name }}</td>
+                    <td class="px-6 py-3 border-b">{{ $schedule->waste->type }}</td>
+                    <td class="px-6 py-3 border-b">{{ $schedule->pickup_date->format('d M Y') }}</td>
+                    <td class="px-6 py-3 border-b">{{ $schedule->quantity }} Kg</td>
+                    <td class="px-6 py-3 border-b">
+                        <span
+                            class="{{ $schedule->status == 'completed' ? 'bg-green-100 text-green-600' : ($schedule->status == 'pending' ? 'bg-yellow-100 text-yellow-600' : ($schedule->status == 'in_progress' ? 'bg-yellow-100 text-yellow-600' : 'bg-red-100 text-red-600'))  }} px-2 py-1 text-sm rounded">
+                            {{ ucfirst($schedule->status) }}
+                        </span>
+                    </td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="5" class="px-6 py-3 text-center text-gray-500">Tidak ada data jadwal.</td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-6">
+        {{ $pendingSchedule->links('pagination::tailwind') }}
+    </div>
 </div>
 
 <script>
@@ -153,7 +198,7 @@
             const scheduleOptions = {
                 chart: {
                     type: 'pie',
-                    height: 350
+                    height: 350,
                 },
                 series: [
                     scheduleStatus.pending,

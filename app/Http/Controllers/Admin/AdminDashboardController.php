@@ -65,6 +65,12 @@ class AdminDashboardController extends Controller
             ->take(5)
             ->get();
 
+        // Ambil jadwa pending (limit 5)
+        $pendingSchedule = Schedule::with('user')
+            ->where('status', 'pending')
+            ->take(5)
+            ->paginate(5);
+
         return view('admin.dashboard', [
             'totalUsers' => $totalUsers,
             'totalTransactions' => $totalTransactions,
@@ -73,6 +79,7 @@ class AdminDashboardController extends Controller
             'months' => $months,
             'totals' => $totals,
             'statusData' => $statusData,
+            'pendingSchedule' => $pendingSchedule,
         ]);
     }
 
