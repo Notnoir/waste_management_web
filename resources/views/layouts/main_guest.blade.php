@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,14 @@
     <!-- Tailwind CSS -->
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
+
 <body class="flex flex-col min-h-screen bg-gray-100">
     <!-- Header -->
-    <nav class="bg-green-600 shadow">
+    <nav class="w-full sticky top-0 z-50 start-0 bg-green-600 shadow">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="/img/logo2-putih.png" class="h-8 mr-2" alt="EcoConnect Logo">
-                <span class="text-white text-lg font-bold">EcoConnect</span>
+            <div class="flex items-center space-x-3">
+                <img src="/img/logo2-putih.png" class="h-12 mr-2" alt="EcoConnect Logo">
+                <span class="text-white text-3xl font-bold">EcoConnect</span>
             </div>
             <div class="flex items-center space-x-4">
                 <a href="/login" class="text-white">Masuk</a>
@@ -34,4 +36,5 @@
         </div>
     </footer>
 </body>
+
 </html>
