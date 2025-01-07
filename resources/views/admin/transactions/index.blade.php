@@ -53,7 +53,7 @@
             <thead class="bg-gray-50">
                 <tr>
                     <th class="px-6 py-3 border-b">#</th>
-                    <th class="px-6 py-3 border-b">User</th>
+                    <th class="px-6 py-3 border-b">Pengguna</th>
                     <th class="px-6 py-3 border-b">Jadwal</th>
                     <th class="px-6 py-3 border-b">Jumlah</th>
                     <th class="px-6 py-3 border-b">Status</th>
@@ -117,7 +117,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Add New Transaction
+                    Tambah Transaksi Baru
                 </h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -138,7 +138,7 @@
                     <!-- User -->
                     <div class="col-span-2">
                         <label for="user_id"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pengguna</label>
                         <select name="user_id" id="user_id"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
@@ -152,7 +152,7 @@
                     <!-- Schedule -->
                     <div class="col-span-2">
                         <label for="schedule_id"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Schedule</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jadwal</label>
                         <select name="schedule_id" id="schedule_id"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option value="">Select Schedule</option>
@@ -163,7 +163,7 @@
                     <!-- Amount -->
                     <div class="col-span-2">
                         <label for="amount"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Amount</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah</label>
                         <input type="number" name="amount" id="amount" step="0.1"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
@@ -187,7 +187,7 @@
                     <!-- Payment Method -->
                     <div class="col-span-2">
                         <label for="payment_method"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Payment Method</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Metode Pembayaran</label>
                         <input type="text" name="payment_method" id="payment_method"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="e.g., Credit Card, Bank Transfer" required>
@@ -197,7 +197,7 @@
 
                 <button type="submit"
                     class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm mt-5 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Add Transaction
+                    Tambahkan Transaksi
                 </button>
             </form>
         </div>
@@ -210,7 +210,7 @@
     <div class="relative p-4 w-full max-w-md max-h-full overflow-y-auto">
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Edit Transaction</h3>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Edit Transaksi</h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                     data-modal-hide="edit-modal">
@@ -244,7 +244,7 @@
                     <!-- Amount -->
                     <div class="col-span-2">
                         <label for="edit-amount"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Amount</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah</label>
                         <input type="number" name="amount" id="edit-amount"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
@@ -267,7 +267,7 @@
                 <!-- Payment Method -->
                 <div class="col-span-2">
                     <label for="edit-payment_method"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Payment Method</label>
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Metode Pembayaran</label>
                     <select name="payment_method" id="edit-payment_method"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         required>

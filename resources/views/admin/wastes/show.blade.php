@@ -3,21 +3,21 @@
 @section('content')
 <!-- Content -->
 <div class="p-6 space-y-6">
-    <h1 class="text-3xl font-bold text-gray-800 mb-6">Detail Waste</h1>
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Detail Limbah</h1>
 
     <!-- Informasi Waste -->
     <div class="bg-white shadow rounded p-6">
         <h3 class="text-lg font-semibold text-gray-700 mb-4">Informasi</h3>
         <div class="space-y-4">
-            <p><strong>Type:</strong> <span class="text-gray-800">{{ $waste->type }}</span></p>
-            <p><strong>Cost:</strong> <span class="text-gray-800">Rp {{ number_format($waste->cost, 2) }}</span></p>
-            <p><strong>Category:</strong>
+            <p><strong>Tipe:</strong> <span class="text-gray-800">{{ $waste->type }}</span></p>
+            <p><strong>Biaya:</strong> <span class="text-gray-800">Rp {{ number_format($waste->cost, 2) }}</span></p>
+            <p><strong>Kategori:</strong>
                 <span class="text-gray-800">{{ $waste->category->name ?? 'Uncategorized' }}</span>
             </p>
-            <p><strong>Created At:</strong>
+            <p><strong>Dibuat pada:</strong>
                 <span class="text-gray-800">{{ $waste->created_at->format('Y-m-d H:i') }}</span>
             </p>
-            <p><strong>Last Updated:</strong>
+            <p><strong>Terakhir diperbarui:</strong>
                 <span class="text-gray-800">{{ $waste->updated_at ? $waste->updated_at->format('Y-m-d H:i') : 'Not
                     Updated Yet' }}</span>
             </p>
@@ -42,7 +42,7 @@
 <div id="popup-modal" tabindex="-1"
     class="hidden fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
     <div class="bg-white p-6 rounded-lg w-full max-w-md shadow-lg">
-        <h3 class="text-xl font-semibold text-gray-800 border-b-2 py-3">Hapus Waste</h3>
+        <h3 class="text-xl font-semibold text-gray-800 border-b-2 py-3">Hapus Limbah</h3>
         <p class="text-gray-500 my-6">Apakah Anda yakin ingin menghapus waste <span id="deleteWasteName"></span>?</p>
         <form id="deleteForm" action="" method="POST">
             @csrf

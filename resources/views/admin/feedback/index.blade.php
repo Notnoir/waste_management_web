@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="p-6 space-y-4">
-    <h1 class="text-3xl font-bold text-gray-800">Daftar Feedback</h1>
+    <h1 class="text-3xl font-bold text-gray-800">Daftar Ulasan</h1>
 
     <div class="flex flex-wrap justify-between items-center gap-4">
         <!-- Search Bar -->
@@ -47,7 +47,7 @@
             <thead class="bg-gray-50">
                 <tr>
                     <th class="px-6 py-3 border-b">#</th>
-                    <th class="px-6 py-3 border-b">User</th>
+                    <th class="px-6 py-3 border-b">Pengguna</th>
                     <th class="px-6 py-3 border-b">Jadwal</th>
                     <th class="px-6 py-3 border-b">Rating</th>
                     <th class="px-6 py-3 border-b">Komentar</th>

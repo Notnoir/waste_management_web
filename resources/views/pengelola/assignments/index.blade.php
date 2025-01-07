@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="p-6 space-y-4">
-    <h1 class="text-3xl font-bold text-gray-800">Penugasan Pengambilan Sampah</h1>
+    <h1 class="text-3xl font-bold text-gray-800">Penugasan Pengambilan Limbah</h1>
 
     <div class="flex flex-wrap justify-between items-center gap-4">
         <!-- Search Bar -->
@@ -52,7 +52,7 @@
         <table class="w-full text-left border-collapse">
             <thead class="bg-gray-50">
                 <tr>
-                    <th class="px-6 py-3 border-b">Driver</th>
+                    <th class="px-6 py-3 border-b">Sopir</th>
                     <th class="px-6 py-3 border-b">Jadwal</th>
                     <th class="px-6 py-3 border-b">Kendaraan</th>
                     <th class="px-6 py-3 border-b">Status</th>
@@ -156,7 +156,7 @@
                     <!-- Nama Driver -->
                     <div class="col-span-2">
                         <label for="driver_name" class="block mb-2 text-sm font-medium text-gray-900">Nama
-                            Driver</label>
+                            Sopir</label>
                         <input type="text" name="driver_name" id="driver_name" placeholder="Masukkan nama driver"
                             class="bg-gray-50 border border-gray-300 rounded-lg w-full" required>
                     </div>

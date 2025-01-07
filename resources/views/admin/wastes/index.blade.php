@@ -78,7 +78,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" class="px-6 py-3 text-center text-gray-500">No waste data available.</td>
+                    <td colspan="5" class="px-6 py-3 text-center text-gray-500">Tidak ada data limbah yang tersedia.</td>
                 </tr>
                 @endforelse
             </tbody>
@@ -119,7 +119,7 @@
                 <div class="grid gap-4">
                     <div class="col-span-2">
                         <label for="type"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe</label>
                         <input type="text" name="type" id="type"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             value="{{ old('type') }}">
@@ -129,7 +129,7 @@
                     </div>
                     <div class="col-span-2">
                         <label for="cost"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cost</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Biaya</label>
                         <input type="number" name="cost" id="cost"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             value="{{ old('cost') }}">
@@ -139,10 +139,10 @@
                     </div>
                     <div class="col-span-2">
                         <label for="category_id"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
                         <select name="category_id" id="category_id"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option value="">-- Select Category --</option>
+                            <option value="">-- Pilih Kategori --</option>
                             @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
@@ -198,24 +198,24 @@
                 <div class="grid gap-4">
                     <div class="col-span-2">
                         <label for="edit-type"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe</label>
                         <input type="text" name="type" id="edit-type"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <span id="editTypeError" class="text-red-500 text-sm"></span>
                     </div>
                     <div class="col-span-2">
                         <label for="edit-cost"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cost</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Biaya</label>
                         <input type="number" name="cost" id="edit-cost"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <span id="editCostError" class="text-red-500 text-sm"></span>
                     </div>
                     <div class="col-span-2">
                         <label for="edit-category_id"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
                         <select name="category_id" id="edit-category_id"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option value="">-- Select Category --</option>
+                            <option value="">-- Pilih Kategori --</option>
                             @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach

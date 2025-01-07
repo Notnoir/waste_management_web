@@ -34,7 +34,7 @@
             <thead class="bg-gray-50">
                 <tr>
                     <th class="px-6 py-3 border-b">#</th>
-                    <th class="px-6 py-3 border-b">User</th>
+                    <th class="px-6 py-3 border-b">Pengguna</th>
                     <th class="px-6 py-3 border-b">Jadwal</th>
                     <th class="px-6 py-3 border-b">Rating</th>
                     <th class="px-6 py-3 border-b">Komentar</th>
