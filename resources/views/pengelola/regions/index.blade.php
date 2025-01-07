@@ -77,7 +77,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="3" class="px-6 py-3 text-center text-gray-500">Tidak ada region.</td>
+                    <td colspan="3" class="px-6 py-3 text-center text-gray-500">Tidak ada wilayah.</td>
                 </tr>
                 @endforelse
             </tbody>
@@ -143,7 +143,7 @@
     <div class="relative p-4 w-full max-w-md max-h-full overflow-y-auto">
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Edit Region</h3>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Edit Wilayah</h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                     data-modal-hide="edit-modal">
@@ -163,7 +163,7 @@
                     <!-- Region Name -->
                     <div class="col-span-2">
                         <label for="edit-name"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Region Name</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Wilayah</label>
                         <input type="text" name="name" id="edit-name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
@@ -173,7 +173,7 @@
                 <div>
                     <button type="submit"
                         class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm mt-5 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Update Region
+                        Update Wilayah
                     </button>
                 </div>
             </form>

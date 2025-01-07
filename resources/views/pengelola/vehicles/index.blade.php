@@ -53,7 +53,7 @@
             <thead class="bg-gray-50">
                 <tr>
                     <th class="px-6 py-3 border-b">#</th>
-                    <th class="px-6 py-3 border-b">Nama</th>
+                    <th class="px-6 py-3 border-b">Nama Kendaraan</th>
                     <th class="px-6 py-3 border-b">Plat Nomor</th>
                     <th class="px-6 py-3 border-b">Kapasitas</th>
                     <th class="px-6 py-3 border-b">Status</th>
@@ -113,7 +113,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Add New Vehicle
+                    Tambah Kendaraan Baru
                 </h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -132,8 +132,8 @@
                 @csrf
                 <div class="grid gap-4">
                     <div class="col-span-2">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Vehicle
-                            Name</label>
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Kendaraan
+                            </label>
                         <input type="text" name="name" id="name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
@@ -142,7 +142,7 @@
 
                     <div class="col-span-2">
                         <label for="license_plate"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">License Plate</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Plat Nomor</label>
                         <input type="text" name="license_plate" id="license_plate"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
@@ -151,7 +151,7 @@
 
                     <div class="col-span-2">
                         <label for="capacity"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Capacity (kg)</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kapasitas (kg)</label>
                         <input type="number" name="capacity" id="capacity" step="0.1"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
@@ -173,7 +173,7 @@
 
                 <button type="submit"
                     class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm mt-5 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Add Vehicle
+                    Tambahkan Kendaraan
                 </button>
             </form>
         </div>
@@ -189,7 +189,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Edit Vehicle Data
+                    Edit Data Kendaraan
                 </h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -211,7 +211,7 @@
                     <!-- Name -->
                     <div class="col-span-2">
                         <label for="edit-name"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Kendaraan</label>
                         <input type="text" name="name" id="edit-name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
@@ -220,7 +220,7 @@
                     <!-- License Plate -->
                     <div class="col-span-2">
                         <label for="edit-license_plate"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">License Plate</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Plat Nomor</label>
                         <input type="text" name="license_plate" id="edit-license_plate"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
@@ -229,7 +229,7 @@
                     <!-- Capacity -->
                     <div class="col-span-2">
                         <label for="edit-capacity"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Capacity</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kapasitas (Kg)</label>
                         <input type="number" name="capacity" id="edit-capacity"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
