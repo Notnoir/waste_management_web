@@ -3,13 +3,15 @@
 @section('content')
 <!-- Header -->
 <header class="bg-white shadow p-4 flex items-center justify-between">
-    <img class="w-14 h-w-14 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+    <img class="w-14 h-w-14 rounded-full"
+        src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : 'https://via.placeholder.com/150' }}"
         alt="user photo">
     <h2 class="text-xl font-semibold">Selamat Datang, {{ auth()->user()->name }}!</h2>
     <div>
-        <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        <a href="{{ route('warga.profile.show') }}"
+            class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
             Profil Saya
-        </button>
+        </a>
     </div>
 </header>
 
