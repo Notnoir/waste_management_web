@@ -12,6 +12,7 @@
 <body>
     <div class="text-center">
         <h1>INI HALAMAN unauthorized</h1>
+        <h2>test</h2>
     </div>
 </body>
 
