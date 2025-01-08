@@ -184,6 +184,16 @@
             @yield('content')
         </div>
     </div>
+    <script>
+        // auto close toast
+        setTimeout(function() {
+            var toastSuccess = document.getElementById('toast-success');
+                toastSuccess.classList.add('animate__animated', 'animate__fadeOut');
+                setTimeout(function() {
+                    toastSuccess.style.display = 'none';
+                }, 2000);
+            }, 2000);
+    </script>
 </body>
 
 </html>
