@@ -7,25 +7,27 @@ use App\Http\Middleware\RoleMiddleware;
 use App\Http\Controllers\AuthController;
 
 // admin controllers
-use App\Http\Controllers\Warga\ProfileController as WargaProfileController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\Warga\WargaDashboardController;
 use App\Http\Controllers\admin\WasteController as AdminWasteController;
-use App\Http\Controllers\admin\RegionController as AdminRegionController;
 
 // pengelola controllers
+use App\Http\Controllers\admin\RegionController as AdminRegionController;
 use App\Http\Controllers\Warga\PickupController as WargaPickupController;
 use App\Http\Controllers\admin\VehicleController as AdminVehicleController;
+use App\Http\Controllers\Warga\ProfileController as WargaProfileController;
 use App\Http\Controllers\admin\FeedbackController as AdminFeedbackController;
 use App\Http\Controllers\admin\ScheduleController as AdminScheduleController;
 use App\Http\Controllers\Warga\FeedbackController as WargaFeedbackController;
 use App\Http\Controllers\Pengelola\WasteController as PengelolaWasteController;
 use App\Http\Controllers\Pengelola\RegionController as PengelolaRegionController;
-use App\Http\Controllers\admin\TransactionController as AdminTransactionController;
-use App\Http\Controllers\Pengelola\VehicleController as PengelolaVehicleController;
 
 // warga controllers
+use App\Http\Controllers\admin\TransactionController as AdminTransactionController;
+use App\Http\Controllers\Pengelola\VehicleController as PengelolaVehicleController;
 use App\Http\Controllers\Warga\TransactionController as WargaTransactionController;
 use App\Http\Controllers\Pengelola\FeedbackController as PengelolaFeedbackController;
 use App\Http\Controllers\Pengelola\ScheduleController as PengelolaScheduleController;
@@ -136,6 +138,28 @@ Route::middleware([RoleMiddleware::class . ':warga'])->group(function () {
     Route::get('warga/profile/show', [WargaProfileController::class, 'show'])->name('warga.profile.show');
     Route::get('warga/profile/show/edit', [WargaProfileController::class, 'edit'])->name('warga.profile.edit');
     Route::post('warga/profile//update', [WargaProfileController::class, 'update'])->name('warga.profile.update');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/chats', [ChatController::class, 'index'])->name('chats.index');
+
+    // Membuat chat baru
+    Route::get('/chats/create', [ChatController::class, 'create'])->name('chats.create');
+    Route::post('/chats', [ChatController::class, 'store'])->name('chats.store');
+
+    // Melihat detail chat tertentu dan mengirim pesan
+    Route::get('/chats/{chatId}', [ChatController::class, 'show'])->name('chats.show');
+
+    // Mengirim pesan ke dalam chat tertentu
+    Route::post('/chats/{chatId}/messages', [MessageController::class, 'send'])->name('messages.send');
+
+    // Menandai pesan sebagai sudah dibaca
+    Route::post('/messages/{messageId}/mark-as-read', [MessageController::class, 'markAsRead'])->name('messages.markAsRead');
+
+    Route::post('/chats/{chat}/add-member', [ChatController::class, 'addMember'])->name('chats.addMember');
+
+    // Route::post('/chats/{chat}/send-message', [ChatController::class, 'sendMessage'])->name('chats.sendMessage');
+    Route::post('/chats/{chat}/send-message', [ChatController::class, 'sendMessage'])->name('chats.sendMessage');
 });
 
 // tidak memiliki akses
