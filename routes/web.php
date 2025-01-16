@@ -25,6 +25,7 @@ use App\Http\Controllers\admin\ScheduleController as AdminScheduleController;
 use App\Http\Controllers\Warga\FeedbackController as WargaFeedbackController;
 use App\Http\Controllers\Pengelola\WasteController as PengelolaWasteController;
 use App\Http\Controllers\Pengelola\RegionController as PengelolaRegionController;
+use App\Http\Controllers\Pengelola\ProfileController as PengelolaProfileController;
 
 // warga controllers
 use App\Http\Controllers\admin\TransactionController as AdminTransactionController;
@@ -121,6 +122,10 @@ Route::middleware([RoleMiddleware::class . ':pengelola'])->group(function () {
 
     // route pengelola untuk region
     Route::resource('pengelola/regions', PengelolaRegionController::class, ['as' => 'pengelola']);
+    //route Profile
+    Route::get('pengelola/profile/show', [PengelolaProfileController::class, 'show'])->name('pengelola.profile.show');
+    Route::get('pengelola/profile/show/edit', [PengelolaProfileController::class, 'edit'])->name('pengelola.profile.edit');
+    Route::post('pengelola/profile//update', [PengelolaProfileController::class, 'update'])->name('pengelola.profile.update');
 });
 
 //akses warga

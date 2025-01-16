@@ -46,9 +46,9 @@
                         <p class="truncate text-sm text-gray-500 dark:text-gray-400">{{ auth()->user()->email }}</p>
                     </div>
                     <ul class="py-1 text-sm text-gray-700 dark:text-gray-200">
-                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Dashboard</a>
+                        <li><a href="{{ route('pengelola.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Dashboard</a>
                         </li>
-                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Settings</a>
+                        <li><a href="{{ route('pengelola.profile.show') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Settings</a>
                         </li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST">
