@@ -53,13 +53,24 @@ class ChatController extends Controller
     public function show($chatId)
     {
         $chat = Chat::with('messages.user')->findOrFail($chatId);
+        // Cek apakah pengguna yang login adalah warga
+        $isWarga = auth()->user()->role === 'warga'; // Misalnya peran warga disimpan dalam field 'role'
+
+        // Ambil semua pengguna, tapi filter berdasarkan role jika pengguna adalah warga
+        if ($isWarga) {
+            // Menampilkan hanya admin dan pengelola
+            $users = User::whereIn('role', ['admin', 'pengelola'])->get();
+        } else {
+            // Menampilkan semua pengguna (jika diperlukan)
+            $users = User::all();
+        }
 
         // Cek apakah user adalah anggota chat
         if (!$chat->members()->where('user_id', Auth::id())->exists()) {
             return redirect()->route('chats.index')->with('error', 'Anda tidak memiliki akses ke chat ini');
         }
 
-        return view('chats.show', compact('chat'));
+        return view('chats.show', compact('chat', 'users'));
     }
 
     public function addMember(Request $request, $chatId)
@@ -109,12 +120,7 @@ class ChatController extends Controller
         // Menyimpan pesan ke database
         $message->save();
 
-        // Mengembalikan respons dalam format JSON
-        return response()->json([
-            'id' => $message->id,
-            'message' => $message->message,
-            'user_name' => $message->user->name,
-            'created_at' => $message->created_at->diffForHumans(),
-        ]);
+        // Redirect kembali ke halaman chat dengan pesan sukses
+        return redirect()->route('chats.show', $chat->id)->with('success', 'Pesan berhasil dikirim.');
     }
 }
