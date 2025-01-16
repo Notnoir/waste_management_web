@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\Warga\WargaDashboardController;
 use App\Http\Controllers\admin\WasteController as AdminWasteController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 
 // pengelola controllers
 use App\Http\Controllers\admin\RegionController as AdminRegionController;
@@ -85,6 +86,11 @@ Route::middleware([RoleMiddleware::class . ':admin'])->group(function () {
 
     // route admin untuk region
     Route::resource('admin/regions', AdminRegionController::class);
+
+    //route profile
+    Route::get('admin/profile/show', [AdminProfileController::class, 'show'])->name('admin.profile.show');
+    Route::get('admin/profile/show/edit', [AdminProfileController::class, 'edit'])->name('admin.profile.edit');
+    Route::post('admin/profile//update', [AdminProfileController::class, 'update'])->name('admin.profile.update');
 });
 
 //akses pengelola
