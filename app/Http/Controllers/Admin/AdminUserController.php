@@ -71,6 +71,22 @@ class AdminUserController extends Controller
         return view('admin.users.show', compact('user'));
     }
 
+
+    //Update pengguna.
+    //Update
+    public function update(Request $request, User $user)
+    {
+        $request->validate([
+            'email' => 'required|exists:email',
+            'password' => 'required|exists:password',
+            'role' => 'required|exists:role',
+        ]);
+
+        $user->update($request->all());
+
+        return redirect()->route('users.index')->with('success', 'Pengguna berhasil diperbarui.');
+    }
+
     /**
      * Hapus pengguna.
      */
