@@ -35,7 +35,8 @@
                 <button type="button" class="flex items-center gap-2 text-sm" id="user-menu-button"
                     aria-expanded="false" data-dropdown-toggle="dropdown">
                     <img class="w-8 h-8 rounded-full"
-                        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="User photo">
+                        src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : 'https://via.placeholder.com/150' }}"
+                        alt="User photo">
                     <span class="ms-2">{{ auth()->user()->name }} | {{ auth()->user()->role }}</span>
                 </button>
                 <!-- Dropdown -->
@@ -46,9 +47,11 @@
                         <p class="truncate text-sm text-gray-500 dark:text-gray-400">{{ auth()->user()->email }}</p>
                     </div>
                     <ul class="py-1 text-sm text-gray-700 dark:text-gray-200">
-                        <li><a href="{{ route('pengelola.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Dashboard</a>
+                        <li><a href="{{ route('pengelola.index') }}"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Dashboard</a>
                         </li>
-                        <li><a href="{{ route('pengelola.profile.show') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Settings</a>
+                        <li><a href="{{ route('pengelola.profile.show') }}"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Settings</a>
                         </li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST">

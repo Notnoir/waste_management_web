@@ -1,4 +1,3 @@
-<!-- resources/views/chats/show.blade.php -->
 @extends('layouts.app')
 
 @section('content')
@@ -20,28 +19,9 @@
         </ul>
     </div>
 
-    <!-- Formulir untuk Menambahkan Anggota -->
-    <div class="mb-6">
-        <h2 class="text-xl font-medium mb-2">Tambahkan Anggota:</h2>
-        <form action="{{ route('chats.addMember', $chat->id) }}" method="POST">
-            @csrf
-            <div class="flex space-x-2">
-                <select name="user_id" class="flex-1 p-3 border border-gray-300 rounded-md" required>
-                    <option value="" disabled selected>Pilih Pengguna</option>
-                    @foreach($users as $user)
-                    <!-- Pastikan $users berisi daftar pengguna -->
-                    <option value="{{ $user->id }}">{{ $user->name }} - {{ $user->role }}</option>
-                    @endforeach
-                </select>
-                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
-                    Tambah Anggota
-                </button>
-            </div>
-        </form>
-    </div>
-
     <!-- Pesan-pesan chat -->
-    <div id="message-container" class="space-y-4 mb-6">
+    <div id="message-container" class="space-y-4 mb-6 max-h-96 sm:max-h-[900px] lg:max-h-[430px] md:max-h-[850px]"
+        style="overflow-y: auto;">
         @foreach ($chat->messages as $message)
         <div
             class="message-item flex items-start gap-2.5 {{ $message->user_id === auth()->id() ? 'justify-end' : '' }}">
@@ -74,9 +54,8 @@
 
     <!-- Formulir untuk Mengirim Pesan -->
     <div class="relative">
-        <!-- Formulir untuk Mengirim Pesan -->
         <form action="{{ route('chats.sendMessage', $chat->id) }}" method="POST"
-            class="flex space-x-2 p-3 bg-white border-t border-gray-300 fixed bottom-6 left-1/2 transform -translate-x-1/2 w-[90%] md:w-2/3 lg:w-1/2 rounded-lg shadow-md">
+            class="flex space-x-2 p-3 bg-white border-t border-gray-300 fixed bottom-6 left-1/2 transform -translate-x-1/2 w-[90%] sm:w-[80%] md:w-2/3 lg:w-1/2 rounded-lg shadow-md">
             @csrf
             <input type="text" name="message" placeholder="Ketik pesan..."
                 class="flex-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -85,6 +64,7 @@
         </form>
     </div>
 </div>
+
 <!-- Button Scroll to Bottom -->
 <button id="scrollToBottom" title="Scroll to Bottom"
     class="fixed bottom-5 right-5 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition duration-300">
@@ -95,16 +75,7 @@
     </svg>
 </button>
 
-
 <script>
-    // Scroll to the bottom of the page when the button is clicked
-    document.getElementById('scrollToBottom').addEventListener('click', function () {
-        window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: 'smooth', // Smooth scrolling effect
-        });
-    });
-
     document.addEventListener("DOMContentLoaded", function () {
         // Fungsi untuk menggulir ke elemen terakhir dalam daftar pesan
         function scrollToBottom() {
@@ -114,11 +85,15 @@
             }
         }
 
-        // Panggil fungsi setelah halaman dimuat
-        scrollToBottom();
+        scrollToBottom(); // Pastikan scroll terjadi setelah halaman dimuat
 
-        // Jika diperlukan, tambahkan observer untuk mendeteksi pesan baru (opsional)
+        // Event listener untuk tombol scroll manual
+        document.getElementById('scrollToBottom').addEventListener('click', function () {
+            const messageContainer = document.getElementById('message-container');
+            if (messageContainer) {
+                messageContainer.scrollTop = messageContainer.scrollHeight;
+            }
+        });
     });
-
 </script>
 @endsection
