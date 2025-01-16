@@ -78,7 +78,7 @@
                             <span class="ms-3">Transaksi</span>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="#"
                             class="flex items-center p-2 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
                             <svg class="w-5 h-5 text-white transition group-hover:text-[#21c434] duration-75 dark:text-gray-400 dark:group-hover:text-white"
@@ -92,7 +92,7 @@
                             <span
                                 class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-white bg-green-600 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="{{ route('warga.feedback.index') }}"
                             class="flex items-center p-2 rounded-lg {{ request()->routeIs('warga.feedback.index') ? 'bg-white text-gray-900' : 'text-white dark:text-white hover:bg-white hover:text-gray-900 dark:hover:bg-gray-700' }}">

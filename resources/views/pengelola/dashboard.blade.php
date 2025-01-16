@@ -2,32 +2,32 @@
 
 @section('content')
 <div class="space-y-6 p-3">
-        {{-- flowbite toast --}}
-        @if (session()->has('success'))
-        <div id="toast-success"
-            class="animate__animated animate__bounceInRight fixed top-15 right-5 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
-            role="alert">
-            <div
-                class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                    viewBox="0 0 20 20">
-                    <path
-                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                </svg>
-                <span class="sr-only">Check icon</span>
-            </div>
-            <div class="ms-3 text-sm font-normal">{{session('success')}}</div>
-            <button type="button"
-                class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-                data-dismiss-target="#toast-success" aria-label="Close">
-                <span class="sr-only">Close</span>
-                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                </svg>
-            </button>
+    {{-- flowbite toast --}}
+    @if (session()->has('success'))
+    <div id="toast-success"
+        class="animate__animated animate__bounceInRight fixed top-15 right-5 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+        role="alert">
+        <div
+            class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                viewBox="0 0 20 20">
+                <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+            </svg>
+            <span class="sr-only">Check icon</span>
         </div>
-        @endif
+        <div class="ms-3 text-sm font-normal">{{session('success')}}</div>
+        <button type="button"
+            class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+            data-dismiss-target="#toast-success" aria-label="Close">
+            <span class="sr-only">Close</span>
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+            </svg>
+        </button>
+    </div>
+    @endif
 
     <header class="flex justify-between items-center bg-white shadow p-4 rounded-xl mb-6">
         <h2 class="text-xl font-bold">Selamat Datang, Pengelola!</h2>
@@ -57,6 +57,23 @@
             <p class="text-2xl font-bold text-[#21c434]">{{ number_format($ratingRataRata, 1) }} ⭐</p>
         </div>
     </div>
+
+    <div id="app" class="w-full mx-auto p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <!-- Grafik Statistik Sampah (Disembunyikan pada mobile) -->
+            <div class="bg-white shadow-lg rounded-lg p-6 md:block hidden">
+                <h4 class="text-xl font-medium text-gray-800 mb-4">Statistik Pengambilan Sampah</h4>
+                <div id="pickup-chart" class="h-80"></div>
+            </div>
+
+            <!-- Grafik Transaksi (Selalu tampil) -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h4 class="text-xl font-medium text-gray-800 mb-4">Grafik Transaksi</h4>
+                <div id="transaction-chart" class="h-80 mt-8"></div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Pickup Schedule -->
     <div class="bg-white shadow rounded-xl mb-6">
@@ -203,6 +220,62 @@
     closeModalButton.addEventListener('click', () => {
         confirmModal.classList.add('hidden'); // Sembunyikan modal
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var scheduleStats = @json($scheduleStats); // Ambil data dari controller
+            
+            // Data untuk chart
+            var statuses = scheduleStats.map(stat => stat.status);
+            var totals = scheduleStats.map(stat => stat.total);
+
+            // Konfigurasi chart
+            var options = {
+                chart: {
+                    type: 'pie',
+                    height: 350
+                },
+                labels: statuses,
+                series: totals,
+                // title: {
+                //     text: 'Statistik Pemesanan Pengambilan Sampah Berdasarkan Status',
+                //     align: 'center'
+                // }
+            };
+
+            var chart = new ApexCharts(document.querySelector("#pickup-chart"), options);
+            chart.render();
+
+            // Data untuk Transaction Stats
+            var transactionStats = @json($transactionStats);
+            var months = transactionStats.map(stat => stat.month);
+            var transactionCounts = transactionStats.map(stat => stat.total_transactions);
+
+            // Konfigurasi untuk Transaction Stats Chart (Bar Chart)
+            var transactionChartOptions = {
+                chart: {
+                    type: 'area',
+                    height: 350
+                },
+                series: [{
+                    name: 'Transaksi',
+                    data: transactionCounts
+                }],
+                xaxis: {
+                    categories: months,
+                    title: {
+                        text: 'Bulan'
+                    }
+                },
+                // title: {
+                //     text: 'Jumlah Transaksi per Bulan',
+                //     align: 'center'
+                // }
+            };
+
+            // Membuat chart untuk Transaction Stats
+            var transactionChart = new ApexCharts(document.querySelector("#transaction-chart"), transactionChartOptions);
+            transactionChart.render();
+        });
 </script>
 
 @endsection
