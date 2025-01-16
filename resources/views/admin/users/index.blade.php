@@ -2,32 +2,32 @@
 
 @section('content')
 <div class="p-6 space-y-6">
-        {{-- flowbite toast --}}
-        @if (session()->has('success'))
-        <div id="toast-success"
-            class="animate__animated animate__bounceInRight fixed top-15 right-5 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
-            role="alert">
-            <div
-                class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                    viewBox="0 0 20 20">
-                    <path
-                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                </svg>
-                <span class="sr-only">Check icon</span>
-            </div>
-            <div class="ms-3 text-sm font-normal">{{session('success')}}</div>
-            <button type="button"
-                class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-                data-dismiss-target="#toast-success" aria-label="Close">
-                <span class="sr-only">Close</span>
-                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                </svg>
-            </button>
+    {{-- flowbite toast --}}
+    @if (session()->has('success'))
+    <div id="toast-success"
+        class="animate__animated animate__bounceInRight fixed top-15 right-5 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+        role="alert">
+        <div
+            class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                viewBox="0 0 20 20">
+                <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+            </svg>
+            <span class="sr-only">Check icon</span>
         </div>
-        @endif
+        <div class="ms-3 text-sm font-normal">{{session('success')}}</div>
+        <button type="button"
+            class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+            data-dismiss-target="#toast-success" aria-label="Close">
+            <span class="sr-only">Close</span>
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+            </svg>
+        </button>
+    </div>
+    @endif
 
     <h1 class="text-3xl font-bold text-gray-800">Daftar Pengguna</h1>
     <div class="flex flex-wrap justify-between items-center gap-4">
@@ -82,12 +82,11 @@
                     <td class="px-6 py-3 border-b capitalize">{{ $user->role }}</td>
                     <td class="px-6 py-3 border-b text-center space-x-4">
                         <a href="{{ route('users.show', $user->id) }}" class="text-blue-500 hover:underline">Detail</a>
-                        <button data-modal-target="edit-modal" data-modal-toggle="edit-modal"
-                        data-email="{{ $user->email }}"
-                        data-role="{{ $user->role }}"
-                        class="text-yellow-300 hover:underline">
-                        Edit
-                    </button>                    
+                        <button data-modal-target="edit-modal" data-modal-toggle="edit-modal" data-id="{{ $user->id }}"
+                            data-name="{{ $user->name }}" data-email="{{ $user->email }}" data-role="{{ $user->role }}"
+                            class="text-yellow-300 hover:underline">
+                            Edit
+                        </button>
                         <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
                             class="text-red-500 hover:underline" data-id="{{ $user->id }}" data-name="{{ $user->name }}"
                             type="button">
@@ -212,7 +211,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Edit Vehicle Data
+                    Edit User Data
                 </h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -231,11 +230,20 @@
                 @csrf
                 @method('PUT')
                 <div class="grid gap-4">
+                    <!-- name -->
+                    <div class="col-span-2">
+                        <label for="edit-name"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                        <input type="text" name="name" id="edit-name"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            required>
+                    </div>
+
                     <!-- Email -->
                     <div class="col-span-2">
                         <label for="edit-email"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                        <input type="text" name="email" id="edit-email"
+                        <input type="email" name="email" id="edit-email"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
                     </div>
@@ -245,8 +253,7 @@
                         <label for="edit-password"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                         <input type="text" name="password" id="edit-password"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        >
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
 
                     <!-- Role -->
@@ -256,9 +263,9 @@
                         <select name="role" id="edit-role"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
-                            <option value="available">Admin</option>
-                            <option value="available">Pengelola</option>
-                            <option value="maintenance">Warga</option>
+                            <option value="admin">Admin</option>
+                            <option value="pengelola">Pengelola</option>
+                            <option value="warga">Warga</option>
                         </select>
                     </div>
                 </div>
@@ -273,6 +280,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Modal Hapus -->
 <div id="popup-modal" tabindex="-1"
@@ -298,25 +306,27 @@
 </div>
 
 <script>
-        const editButtons = document.querySelectorAll('[data-modal-target="edit-modal"]');
-        const editModal = document.getElementById('edit-modal');
-        const editForm = document.getElementById('editForm');
+    const editButtons = document.querySelectorAll('[data-modal-target="edit-modal"]');
+    const editModal = document.getElementById('edit-modal');
+    const editForm = document.getElementById('editForm');
 
-        editButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                const userEmail = button.getAttribute('data-email');
-                const userPassword = button.getAttribute('data-password');
-                const userRole = button.getAttribute('data-role');
+    editButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const userId = button.getAttribute('data-id');
+            const userName = button.getAttribute('data-name');
+            const userEmail = button.getAttribute('data-email');
+            const userRole = button.getAttribute('data-role');
 
-                
-                document.getElementById('edit-email').value = userEmail;
-                document.getElementById('edit-password').value = ''; // Leave password empty for security
-                document.getElementById('edit-role').value = userRole;
+            // Set the modal inputs with the values from the button's data attributes
+            document.getElementById('edit-name').value = userName;
+            document.getElementById('edit-email').value = userEmail;
+            document.getElementById('edit-password').value = ''; // Leave password empty for security
+            document.getElementById('edit-role').value = userRole;
 
-                // Set form action dynamically
-                editForm.action = `/admin/users/${userId}`; // Update this route if necessary
-            });
+            // Set the form action to update the correct user based on userId
+            editForm.action = `/admin/users/${userId}`; // Ensure this route is correct for your application
         });
+    });
     // Script untuk modal hapus
     const deleteButtons = document.querySelectorAll('[data-modal-toggle="popup-modal"]');
     const deleteModal = document.getElementById('popup-modal');
